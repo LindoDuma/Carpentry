@@ -1,0 +1,52 @@
+﻿body {
+    margin: 0;
+    border: 0;
+    padding-left: 0;
+    padding-right:0;
+}
+
+.body-content{
+    margin:0;
+    border:none;
+    padding-left:0;
+    padding-right:0px;
+}
+
+#Cats .container{
+    height:auto;
+    width:100%;
+    margin-bottom:100px;
+    padding:0px;
+}
+#Cats img {
+    width:720px;
+    height:auto;
+    aspect-ratio:initial;
+}
+
+
+#Kitchen {
+    /*background-image: url("../Images/Kitchen.jpg");*/
+    background-color: white;
+}
+#Wardrope {
+    /*background-image: url("../Images/Wardrope.jpg");*/
+    background-color: white;
+}
+#TVUnit {
+    /*background-image: url("../Images/TVUnit.jpg");*/
+    background-color: white;
+}
+#Wardrope .row{
+    padding-left:0px;
+}
+
+.btn {
+    background-color:lightslategray;
+    border:none;
+}
+#Cats .container h1 {
+    color:goldenrod;
+    font-family:Arial;
+}
+
