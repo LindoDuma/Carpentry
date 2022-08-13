@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Capentry.Controllers
 {
-    public class RolesController : Controller
+    public class RolesController : ApplicationBaseController
     {
         ApplicationDbContext context;
         public RolesController() {
