@@ -24,6 +24,7 @@ namespace Capentry.Controllers
                 }
                 else 
                 {
+                    //get the usernam/email address if no full name
                     ViewData.Add("FullName",username.ToString());
                 }
             }
