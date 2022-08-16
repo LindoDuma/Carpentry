@@ -14,6 +14,7 @@
 
 </head>
 <body>
+    @using Microsoft.AspNet.Identity
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -29,7 +30,7 @@
                     <li>@Html.ActionLink("Payment", "Payment", "Home", new object { }, new { @class = "navbar-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "navbar-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-link" })</li>
-                    <li>@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "navbar-link" })</li>
+                    @if (User.IsInRole("Admin")) { <li>@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "navbar-link" })</li>}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,7 +38,7 @@
     </div>
     <div class="container-fluid body-content">
         @RenderBody()
-        
+
         <footer>
             <div class="container" id="links">
                 <div class="row">
@@ -46,10 +47,26 @@
                             Follow Us
                         </h3>
                         <ul class="list-inline">
-                            <li><a class="fa fa-facebook" href="www.facebook.com"></a></li>
-                            <li class=""><a class="fa fa-twitter" href="www.facebook.com"></a></li>
-                            <li class=""><a class="fa fa-instagram" href="www.facebook.com"></a></li>
+                            <li><a class="fa fa-facebook" href="https://www.facebook.com/BSLP-Carpentry-Services-102108178881778/"></a></li>
+                            <li><a class="fa fa-whatsapp" href="www.facebook.com"></a></li>
+                            <li><a class="fa fa-instagram" href="www.facebook.com"></a></li>
                         </ul>
+                    </div>
+                    <div class="col-sm-4">
+                        <i class="fa fa-phone hidden"></i>
+                        <h3>
+                            Call Us
+                        </h3>
+                        <p class=""> 0727500762</p>
+                    </div>
+                    <div class="col-sm-4">
+                        <h3>
+                            Find Us
+                        </h3>
+                        <p class="glyphicon glyphicon-map-marker">
+                            here: Bhekulwandle Abaphehli Area
+                            Amanzimtoti 4126
+                        </p>
                     </div>
                 </div>
             </div>
