@@ -1,12 +1,54 @@
-﻿body {
+﻿html {
+    overflow-x: hidden;
 }
-.navbar{
+body {
+}
+.navbar {
+    background-color: black;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*NABBAR BOOTSTRAP TEXT COLORS ARE AROUND 4668*/
+
+/*NAVBAR BRAND*/
+.navbar-inverse .navbar-brand {
+    color: white;
+    font-family:;
+}
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+    color: gold;
+    background-color: transparent;
+}
+/*NAVBAR LINKS*/
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-nav > li > a:focus {
+    color: gold;
+    background-color: transparent;
+}
+/*FOOTER*/
+footer {
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    background-color: #0d0d0d;
+}
+
+#links{
+    color:white;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+#copy{
     background-color:black;
-    border:none;
 }
-.navbar-brand{
-    
-}
-.tea{
+#copy p{
+    text-align:center;
     color:white;
 }
