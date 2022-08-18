@@ -5,6 +5,7 @@
     overflow-y:auto;
     margin-bottom: 0px;
     min-height: 100vh;
+    font-family:Roboto,sans-serif;
 }
 body {
     margin: 0px;
@@ -33,9 +34,29 @@ body {
     border: none;
     padding-left: 10px;
     padding-right: 10px;
+    font-family:Nunito,serif;
     /*padding-top:0px;
     padding-bottom:0px;*/
     /*min-height: 80px;*/
+}
+.navbar-toggle{
+    border:none;
+    border-style:none;
+    border-color:gold;
+}
+.navbar-toggle:hover {
+    border: none;
+    border-style:none;
+    border-color: gold;
+    background-color:black;
+    color:gold;
+}
+.navbar-toggle:active {
+    border: none;
+    border-style: none;
+    border-color: gold;
+    background-color:black;
+    color:gold;
 }
 .navbar .container-fluid {
     /*margin-top: auto;
@@ -75,7 +96,7 @@ footer {
     width:100%;
 }
 footer .col-sm-4{
-    padding:5px;
+    padding:0px;
     margin-bottom:5px;
 }
 #links{
@@ -86,8 +107,9 @@ footer .col-sm-4{
 #nav{
     
 }
-#contacts li span{
-    display: inline;
+#contacts li{
+    display:flex;
+    flex-direction:row;
 }
 #copy{
     background-color:black;
@@ -110,6 +132,7 @@ footer a{
     text-decoration: none;
     border-radius:50%;
     height:50px;
+    background-color:dimgrey;
 }
 
 /* Add a hover effect if you want */
