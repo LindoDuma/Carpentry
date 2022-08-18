@@ -86,8 +86,8 @@ footer .col-sm-4{
 #nav{
     
 }
-#contacts li p{
-    display: inline-block;
+#contacts li span{
+    display: inline;
 }
 #copy{
     background-color:black;
