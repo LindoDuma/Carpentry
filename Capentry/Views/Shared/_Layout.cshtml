@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/CSS/Layout.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Ubuntu" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Ubuntu|Pacifico" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     @*@Styles.Render("~/Content/CSS/Index.css")*@
     @*<link href="~/Content/CSS/Index.css" rel="stylesheet" type="text/css" />*@
@@ -30,42 +30,46 @@
                     <li>@Html.ActionLink("Payment", "Payment", "Home", new object { }, new { @class = "navbar-link" })</li>
                     <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "navbar-link" })</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-link" })</li>
-                    @if (User.IsInRole("Admin")) { <li>@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "navbar-link" })</li>}
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "navbar-link" })</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container-fluid body-content">
-        @RenderBody()
-        <footer>
+        <div class="container" id="main">
+            @RenderBody()
+        </div>
+        <footer id="footer">
             <div class="container" id="links">
                 <div class="row">
-                    <div class="col-sm-4">
-                        <h3>
-                            Follow Us
-                        </h3>
+                    <div class="col-sm-4" id="social">
+
+
+                        <h3>Follow Us</h3>
                         <ul class="list-inline">
-                            <li><a class="fa fa-facebook" href="https://www.facebook.com/BSLP-Carpentry-Services-102108178881778/"></a></li>
-                            <li><a class="fa fa-whatsapp" href="www.facebook.com"></a></li>
-                            <li><a class="fa fa-instagram" href="www.facebook.com"></a></li>
+                            <li><a class="fa fa-facebook" href="https://www.facebook.com"></a></li>
+                            <li><a class="fa fa-whatsapp" href="https://www.facebook.com"></a></li>
+                            <li><a class="fa fa-instagram" href="https://www.facebook.com"></a></li>
                         </ul>
                     </div>
-                    <div class="col-sm-4">
-                        <i class="fa fa-phone hidden"></i>
-                        <h3>
-                            Call Us
-                        </h3>
-                        <p class=""> 0727500762</p>
+                    <div class="col-sm-4" id="contacts">
+                        <h3>Contacts</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="fa fa-phone"></span><p> Give us a call 0727500762</p></li>
+                            <li><span class="fa fa-email"></span><p>lindoduma10@gmail.com</p></li>
+                        </ul>
                     </div>
-                    <div class="col-sm-4">
-                        <h3>
-                            Find Us
-                        </h3>
-                        <p class="glyphicon glyphicon-map-marker">
-                            here: Bhekulwandle Abaphehli Area
-                            Amanzimtoti 4126
-                        </p>
+                    <div class="col-sm-4" id="nav">
+                        <h3>Useful Links</h3>
+                        <ul class="nav">
+                            <li><a href="~/Home/Index">Home</a></li>
+                            <li><a href="~/Home/Index">Payment</a></li>
+                            <li><a href="~/Home/Index">About Us</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -73,10 +77,22 @@
                 <p>&copy; @DateTime.Now.Year - BSLP Carpentry</p>
             </div>
         </footer>
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @*<script>
+        $(document).ready(function () {
+            var docHeight = $(window).height();
+            var footerHeight = $('#footer').height();
+            var footerTop = $('#footer').position().top + footerHeight;
+
+            if (footerTop < docHeight) {
+                $('#footer').css('margin-top', 20 + (docHeight - footerTop) + 'px');
+            }
+        });
+    </script>*@
 </body>
 </html>

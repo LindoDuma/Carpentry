@@ -72,7 +72,7 @@
     /*display: flex;*/
 }
 .col-sm-6, .col-sm-4 {
-    padding: 0px;
+    padding: 5px;
 }
 #Description {
     padding: 50px;
