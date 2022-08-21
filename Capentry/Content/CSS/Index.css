@@ -44,10 +44,7 @@
     border-color: black;
     position: center;
     color: white;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
+    border-radius: 0px;
 }
 .jumbotron .btn:hover {
     background-color: darkgray;
@@ -56,10 +53,7 @@
     border-color: black;
     position: center;
     color: white;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
+    border-radius: 0px;
 }
 
 #Cats .container{
@@ -110,19 +104,13 @@
     background-color: black;
     border: none;
     align-self: center;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
+    border-radius: 0px;
 }
 #Cats .btn:hover {
     background-color: black;
     border: none;
     border-color: black;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 0px;
-    border-top-left-radius: 0px;
+    border-radius: 0px;
 }
 #Description h1 {
     color: black;
