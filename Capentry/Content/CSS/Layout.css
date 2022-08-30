@@ -1,10 +1,6 @@
 ﻿html {
-    height: 100%;
-    width: 100%;
     overflow-x: hidden;
     overflow-y:auto;
-    margin-bottom: 0px;
-    min-height: 100vh;
     font-family:Roboto,sans-serif;
 }
 body {
@@ -39,24 +35,27 @@ body {
     padding-bottom:0px;*/
     /*min-height: 80px;*/
 }
-.navbar-toggle{
-    border:none;
-    border-style:none;
-    border-color:gold;
+navbar-toggler{
+    background-color:transparent;
+    border-radius:0px;
 }
-.navbar-toggle:hover {
-    border: none;
-    border-style:none;
-    border-color: gold;
-    background-color:black;
-    color:gold;
+.navbar-toggler:hover {
+    border-color: white;
+    background-color: transparent;
+    border-radius: 0px;
 }
-.navbar-toggle:active {
-    border: none;
-    border-style: none;
-    border-color: gold;
-    background-color:black;
-    color:gold;
+.navbar-toggler:disabled {
+    border-color: white;
+    background-color: transparent;
+    border-radius: 0px;
+}
+.navbar-toggler:active {
+    border-color: white;
+    background-color: transparent;
+    border-radius: 0px;
+}
+.navbar span {
+    color: white !important;
 }
 .navbar .container-fluid {
     /*margin-top: auto;
@@ -76,8 +75,9 @@ body {
     background-color: transparent;
 }
 /*NAVBAR LINKS*/
-.navbar-inverse .navbar-nav > li > a {
-    color: white;
+.navbar-nav > li > a {
+    color: white !important;
+    text-align:center;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
@@ -89,20 +89,21 @@ body {
 footer {
     margin: 0px;
     margin-top:auto;
+    margin-bottom:0px;
     padding: 0px;
     border: none;
     background-color: #0d0d0d;
     bottom:0;
     width:100%;
 }
-footer .col-sm-4{
-    padding:0px;
+footer .col-lg-4{
+    padding:5px;
     margin-bottom:5px;
 }
 #links{
     color:white;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 60px;
+    padding-right: 60px;
 }
 #nav{
     

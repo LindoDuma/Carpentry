@@ -56,31 +56,41 @@
     border-radius: 0px;
 }
 
-#Cats .container{
-    height:auto;
-    width:100%;
-    margin-bottom:100px;
-    padding:0px 0px;
+#Cats .container-fluid {
+    height: auto;
+    width: 100%;
+    margin-top: 100px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 100px;
+    padding: 0px 0px;
 }
 #Cats img {
     width: auto;
     height: auto;
-    aspect-ratio: initial;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    aspect-ratio:initial;
+    /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
+    min-width:250px;
     max-height:600px;
 }
 .row-no-gutters,.row {
 
 }
-.col-sm-6, .col-sm-4, .col-sm-7, .col-sm-3, .col-sm-8 {
+.col-sm-6, .col-sm-4, .col-sm-7, .col-sm-3, .col-sm-8, .col {
     padding: 40px;
 }
+
+.col-lg-6, .col-lg-4, .col-lg-7, .col-lg-3, .col-lg-8, .col {
+    padding: 40px;
+}
+
 #Description {
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 20px;
     padding-bottom: 20px;
-    text-align: justify;
+    text-align:justify-all;
+    align-self:center;
     height: 100%;
 }
 

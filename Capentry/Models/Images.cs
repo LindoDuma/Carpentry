@@ -6,12 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Capentry.Models
 {   
-    public class Image
+    public class Images
     {
         [Key]
         public int ImageID { get; set; }
         public string ImageName { get; set; }
         public string ImagePath{ get; set; }
+
+        public string PublicID { get; set; }    
 
         //public Project Project { get; set; }
     }

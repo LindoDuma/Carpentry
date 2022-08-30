@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Capentry.Models.Images>
+@using Microsoft.AspNet.Identity
+
+<link href="~/Content/CSS/Images.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Here Are The Images Yoooh!</h2>
+@if (User.Identity.IsAuthenticated)
+{
+<p>
+    @Html.ActionLink("Upload Image", "UploadImage")
+</p>
+}
+
+<div class="container" id="Images">
+    @*<img class="" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) style="width:400px; height:400px; aspect-ratio:initial;" />*@
+
+    @if (Model.FirstOrDefault() != null) {
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+            <div class="col-sm-6 col-md-4 col-lg-3 item">
+                <a>
+                    <img class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="~/Content/Images/Kitchen.jpg" />
+                </a>
+            </div>
+            }
+        </div>
+     }
+     else{
+        <p class="text-center align-self-center">There are no images to show yet</p>
+     }
+</div>
+
+
