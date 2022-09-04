@@ -21,6 +21,8 @@ namespace Capentry.Controllers
         // GET: ImageModels
         public ActionResult Index()
         {
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "Name");
+
             return View(db.ImageModels.ToList());
         }
 
@@ -28,12 +30,14 @@ namespace Capentry.Controllers
         [HttpGet]
         public ActionResult UploadImage()
         {
-            return View();
+            ImageViewModel imageViewModel = new ImageViewModel();
+            ViewBag.Projects = new SelectList (db.Projects,"ProjectID","ProjectName");
+            return View(imageViewModel);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadImage(ImageViewModel imageViewModel)
+        public ActionResult UploadImage(ImageViewModel imagesVM)
         {
             if (ModelState.IsValid)
             {
@@ -43,15 +47,15 @@ namespace Capentry.Controllers
                               "QLDO8_T6OQ1vwqvajZMb9m39OGw");
 
                 Cloudinary cloudinary = new Cloudinary(account);
-                if (imageViewModel.File.ContentLength > 0)
+                if (imagesVM.Files.ContentLength > 0)
                 {
 
-                    string fileName = Path.GetFullPath(imageViewModel.File.FileName);
+                    string fileName = Path.GetFullPath(imagesVM.Files.FileName);
                     
 
                     var uploadParams = new ImageUploadParams()
                     {
-                        File = new FileDescription(fileName,imageViewModel.File.InputStream),
+                        File = new FileDescription(fileName,imagesVM.Files.InputStream),
 
                         Folder = "CarpentryImages/",
 
@@ -63,7 +67,8 @@ namespace Capentry.Controllers
                     {
                         ImageName = fileName,
                         ImagePath = uploadResult.SecureUrl.AbsolutePath,
-                        PublicID = uploadResult.PublicId
+                        PublicID = uploadResult.PublicId,
+                        ProjectID = imagesVM.ProjectID,
                     };
 
                     db.ImageModels.Add(imageModel);
@@ -72,7 +77,7 @@ namespace Capentry.Controllers
                 }
             }
 
-            return View(imageViewModel);
+            return View(imagesVM);
         }
     }
 }

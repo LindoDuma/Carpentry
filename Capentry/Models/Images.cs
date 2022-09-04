@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Capentry.Models
 {   
@@ -13,8 +14,14 @@ namespace Capentry.Models
         public string ImageName { get; set; }
         public string ImagePath{ get; set; }
 
-        public string PublicID { get; set; }    
+        [NotMapped]
+        public HttpPostedFileBase Files { get; set; }
 
-        //public Project Project { get; set; }
+        public string PublicID { get; set; }
+
+        public int ProjectID { get; set; }
+
+        [ForeignKey("ProjectID")]
+        public Projects Project { get; set; }
     }
 }

@@ -193,6 +193,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,15 +214,37 @@
     <Compile Include="Migrations\202208300920545_Updated Images Table name.designer.cs">
       <DependentUpon>202208300920545_Updated Images Table name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202208301519256_IDK.cs" />
+    <Compile Include="Migrations\202208301519256_IDK.designer.cs">
+      <DependentUpon>202208301519256_IDK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209011340502_ForeignKeyError.cs" />
+    <Compile Include="Migrations\202209011340502_ForeignKeyError.designer.cs">
+      <DependentUpon>202209011340502_ForeignKeyError.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209011346313_ForeignKeyError1.cs" />
+    <Compile Include="Migrations\202209011346313_ForeignKeyError1.designer.cs">
+      <DependentUpon>202209011346313_ForeignKeyError1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209011401217_MoreKeys.cs" />
+    <Compile Include="Migrations\202209011401217_MoreKeys.designer.cs">
+      <DependentUpon>202209011401217_MoreKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202209041307256_Next.cs" />
+    <Compile Include="Migrations\202209041307256_Next.designer.cs">
+      <DependentUpon>202209041307256_Next.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Images.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Projects.cs" />
+    <Compile Include="Models\ProjectTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-grid.css" />
@@ -305,6 +328,11 @@
     <Content Include="Views\Account\RegisterRole.cshtml" />
     <Content Include="Views\Images\UploadImage.cshtml" />
     <Content Include="Views\Images\Index.cshtml" />
+    <Content Include="Views\Projects\Create.cshtml" />
+    <Content Include="Views\Projects\Delete.cshtml" />
+    <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Projects\Edit.cshtml" />
+    <Content Include="Views\Projects\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -349,6 +377,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202208300920545_Updated Images Table name.resx">
       <DependentUpon>202208300920545_Updated Images Table name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202208301519256_IDK.resx">
+      <DependentUpon>202208301519256_IDK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209011340502_ForeignKeyError.resx">
+      <DependentUpon>202209011340502_ForeignKeyError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209011346313_ForeignKeyError1.resx">
+      <DependentUpon>202209011346313_ForeignKeyError1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209011401217_MoreKeys.resx">
+      <DependentUpon>202209011401217_MoreKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202209041307256_Next.resx">
+      <DependentUpon>202209041307256_Next.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

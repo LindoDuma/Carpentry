@@ -6,11 +6,11 @@
 
 <h2>Upload</h2>
 
-@using (Html.BeginForm("UploadImage", "ImageModels", FormMethod.Post, new { enctype = "multipart/form-data",})) 
+@using (Html.BeginForm("UploadImage", "Images", FormMethod.Post, new { enctype = "multipart/form-data",})) 
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
     <h4>Upload Here Bruh</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -18,11 +18,23 @@
     <div class="form-group">
         @Html.Label("Image", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.File, new { type = "file", @class = "form-control" })
+            @Html.TextBoxFor(model => model.Files, new { type = "file", @class = "form-control" })
             @Html.ValidationMessage("Please Select Photo")
         </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Project", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="submit" value="Upload" class="btn btn-default" />
+            @Html.DropDownListFor(model => model.ProjectID, (SelectList)ViewBag.Projects,
+                    "-- Select --")
+            @Html.ValidationMessage("Please Select Photo")
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Upload" class="btn btn-light" />
         </div>
     </div>
 </div>
