@@ -1,15 +1,18 @@
 ﻿@model IEnumerable<Capentry.Models.Projects>
+@using Microsoft.AspNet.Identity    
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Projects";
 }
 
-<h2>Index</h2>
+<h2>Projects</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+@if(User.IsInRole("Admin")) {
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="table table-responsive-lg">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProjectName)

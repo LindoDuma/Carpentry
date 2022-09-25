@@ -7,7 +7,8 @@
     border: none;
     padding-left: 0px;
     padding-right: 0px;
-    
+    padding-bottom: 0;
+    min-height: 100%;
 }
 
 .jumbotron {
@@ -38,21 +39,21 @@
     font-weight:lighter;
 }
 .jumbotron .btn {
-    background-color: darkgrey;
+    /*background-color: initial;*/
     border: none;
     border-width: 2px;
     border-color: black;
     position: center;
-    color: white;
+    /*color: white;*/
     border-radius: 0px;
 }
 .jumbotron .btn:hover {
-    background-color: darkgray;
+    /*background-color: initial;*/
     border: none;
     border-width: 2px;
     border-color: black;
     position: center;
-    color: white;
+    /*color: white;*/
     border-radius: 0px;
 }
 
@@ -100,7 +101,8 @@
 }
 #Wardrope {
     /*background-image: url("../Images/Wardrope.jpg");*/
-    background-color: #f2f2f2;
+    /*background-color: #f2f2f2;*/
+    background-color: white;
 }
 #TVUnit {
     /*background-image: url("../Images/TVUnit.jpg");*/

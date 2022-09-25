@@ -7,30 +7,50 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Here Are The Images Yoooh!</h2>
-@if (User.Identity.IsAuthenticated)
-{
-    <p>
-        @Html.ActionLink("Upload Image", "UploadImage")
-    </p>
-}
+<h1 class="text-center p-3">Gallery</h1>
 
 <div class="container" id="Images">
-    @if (Model.FirstOrDefault() != null) {
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <p>
+            @Html.ActionLink("  Upload Image", "UploadImage", null, new { @class = "btn btn-dark btn bi bi-upload" })
+        </p>
+    }
+
+    @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3" }))
+    {
+        <div class="row g-2">
+            <div class="col-sm-4 col-md-2 col-lg-2">
+                @Html.DropDownList("ProjectID", (SelectList)ViewBag.ProjectID, "Project", new { @class = "form-control form-select" })
+            </div>
+            <div class="col-sm-4 col-md-2 col-lg-2">
+                @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "Project Type", new { @class = "form-control form-select" })
+            </div>
+            <div class="col-sm-4 col-md-2 col-lg-2">
+                <input class="btn btn-outline-dark" type="submit" value="Filter" />
+            </div>
+        </div>
+    }
+
+    @if (Model.FirstOrDefault() != null)
+    {
         <div class="row">
+
             @foreach (var item in Model)
             {
-                <div class="col-sm-6 col-md-4 col-lg-3 item">
-                    <a href="">
+                <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
+                    <a href="~/Images/@item.ImageID">
                         <img class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
                     </a>
                 </div>
             }
         </div>
-     }
-     else{
-        <p class="text-center align-self-center">There are no images to show yet</p>
-     }
+    }
+    else
+    {
+        <h2 class="text-center align-self-center m-5 p-5">There are no images to show yet</h2>
+    }
 </div>
 
 

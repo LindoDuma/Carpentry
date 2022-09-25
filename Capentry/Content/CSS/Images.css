@@ -1,9 +1,18 @@
 ﻿body {
 }
 
+h1{
+    font-size:50px;
+}
+#Images{
+    background-color:inherit;
+    margin-bottom:100px;
+}
+
 #Images img{
-    width:400px;
-    height:400px;
+    width:620px;
+    height:300px;
     aspect-ratio:initial;
-    image-rendering:optimizeSpeed;
+    object-fit:cover;
+    image-orientation:45deg;
 }

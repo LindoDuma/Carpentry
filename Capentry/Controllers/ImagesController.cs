@@ -11,6 +11,8 @@ using CloudinaryDotNet;
 using System.IO;
 using CloudinaryDotNet.Actions;
 using Capentry.ViewModels;
+using System.Runtime.CompilerServices;
+using Microsoft.Ajax.Utilities;
 
 namespace Capentry.Controllers
 {
@@ -19,11 +21,27 @@ namespace Capentry.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ImageModels
-        public ActionResult Index()
+        public ActionResult Index(int? ProjectID,ProjectTypes? ProjectType)
         {
-            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "Name");
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
 
-            return View(db.ImageModels.ToList());
+            ViewBag.ProjectType = new SelectList((ProjectTypes[])Enum.GetValues(typeof (ProjectTypes)), "ProjectTypes");
+
+            var imageList = db.ImageModels.ToList();
+
+            var projectList = db.Projects.Where(h => h.ProjectType == ProjectType).Select(b => b.ProjectID).ToList();
+
+            if (ProjectID != null)
+            {
+                imageList = db.ImageModels.Where(y => y.ProjectID == ProjectID).ToList();
+            }
+
+            if (ProjectType != null)
+            {
+                imageList = db.ImageModels.Where(y => projectList.Contains(y.ProjectID)).ToList();
+            }
+
+            return View(imageList);
         }
 
         // GET: ImageModels/Create
