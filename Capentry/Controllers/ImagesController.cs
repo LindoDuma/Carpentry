@@ -21,7 +21,7 @@ namespace Capentry.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ImageModels
-        public ActionResult Index(int? ProjectID,ProjectTypes? ProjectType)
+        public ActionResult Index(ProjectTypes? ProjectType)
         {
             ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
 
@@ -31,11 +31,6 @@ namespace Capentry.Controllers
 
             var projectList = db.Projects.Where(h => h.ProjectType == ProjectType).Select(b => b.ProjectID).ToList();
 
-            if (ProjectID != null)
-            {
-                imageList = db.ImageModels.Where(y => y.ProjectID == ProjectID).ToList();
-            }
-
             if (ProjectType != null)
             {
                 imageList = db.ImageModels.Where(y => projectList.Contains(y.ProjectID)).ToList();
@@ -43,6 +38,25 @@ namespace Capentry.Controllers
 
             return View(imageList);
         }
+
+        public JsonResult GetImages(ProjectTypes? ProjectType)
+        {
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
+
+            ViewBag.ProjectType = new SelectList((ProjectTypes[])Enum.GetValues(typeof(ProjectTypes)), "ProjectTypes");
+
+            var imageList = db.ImageModels.ToList();
+
+            var projectList = db.Projects.Where(h => h.ProjectType == ProjectType).Select(b => b.ProjectID).ToList();
+
+            if (ProjectType != null)
+            {
+                imageList = db.ImageModels.Where(y => projectList.Contains(y.ProjectID)).ToList();
+            }
+
+            return Json(imageList, JsonRequestBehavior.AllowGet);
+        }
+
 
         // GET: ImageModels/Create
         [HttpGet]

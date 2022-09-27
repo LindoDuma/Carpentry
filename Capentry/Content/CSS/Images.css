@@ -1,8 +1,52 @@
 ﻿body {
 }
 
+.body-content{
+    padding-right:0;
+    padding-left:0;
+}
+#head{
+    background-color:inherit;
+}
+
+
+#tabs{
+    /*background-color:lightgray;*/
+    margin:0;
+    margin-bottom:10px;
+    padding:0;
+}
+
+#tabs li > a {
+    text-align: center;
+    min-width: 100%;
+    font-family: Roboto,sans-serif;
+    border-radius:0;
+    color:black;
+}
+
+#tabs li > a:active {
+    text-align: center;
+    min-width: 100%;
+    font-family: Roboto,sans-serif;
+    border-radius: 0;
+    color:white;
+}
+
+option{
+    background-color:white;
+}
+
+option:hover{
+    background-color:black;
+    color:gold;
+}
+
 h1{
     font-size:50px;
+    font-family:Roboto,sans-serif;
+    color:black;
+    font-variant-caps:all-petite-caps;
 }
 #Images{
     background-color:inherit;

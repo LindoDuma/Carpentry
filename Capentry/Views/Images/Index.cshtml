@@ -7,25 +7,41 @@
     ViewBag.Title = "Index";
 }
 
-<h1 class="text-center p-3">Gallery</h1>
+<div class="container-fluid p-0" id="head">
+    <h1 class="text-center p-3">Gallery</h1>
+
+    @*<div class="container-fluid" id="tabs">
+        <ul class="nav nav-pills nav-fill justify-content-center">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">All</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="">Kitchens</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">Wardrobes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="" tabindex="-1">TV Units</a>
+            </li>
+        </ul>
+    </div>*@
+</div>
 
 <div class="container" id="Images">
 
-    @if (User.Identity.IsAuthenticated)
+    @if (User.IsInRole("Admin"))
     {
-        <p>
+        <div class="container-fluid">
             @Html.ActionLink("  Upload Image", "UploadImage", null, new { @class = "btn btn-dark btn bi bi-upload" })
-        </p>
+        </div>
     }
 
     @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3" }))
     {
-        <div class="row g-2">
+        <div class="row g-2 flex-row">
             <div class="col-sm-4 col-md-2 col-lg-2">
-                @Html.DropDownList("ProjectID", (SelectList)ViewBag.ProjectID, "Project", new { @class = "form-control form-select" })
-            </div>
-            <div class="col-sm-4 col-md-2 col-lg-2">
-                @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "Project Type", new { @class = "form-control form-select" })
+                @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter" , id="PTypes"})
             </div>
             <div class="col-sm-4 col-md-2 col-lg-2">
                 <input class="btn btn-outline-dark" type="submit" value="Filter" />
@@ -35,7 +51,7 @@
 
     @if (Model.FirstOrDefault() != null)
     {
-        <div class="row">
+        <div class="row" id="imageData">
 
             @foreach (var item in Model)
             {
@@ -52,5 +68,39 @@
         <h2 class="text-center align-self-center m-5 p-5">There are no images to show yet</h2>
     }
 </div>
+
+<script>
+    $(document).ready(function () {
+        $("#PTypes").click(function () {
+            var ProjectType = $("ProjectType").val();
+            var searchValue = $("ProjectType").val();
+            var setData = $("imageData");
+            setData.html("");
+
+            $.ajax({
+                type = "post",
+                url = "/Images/GetImages?ProjectType=" + ProjectType + "&SearchValue" + searchValue,
+                contentType: "html",
+                success: function (result) {
+                    if (result.length == 0) {
+                        setData.append('<P> no data found<P/>')
+                    }
+                    else {
+                        $.each(result, function (index, value) {
+                            var Data = 
+                                '<div class="col-sm-5 col-md-4 col-lg-3 item p-2">'
+                    '<a href="~/Images/'+value.ImageID+'">'
+                        '<img class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com",' + value.ImagePath + '))/>'
+                    '</a>'
+                '</div>'
+                                ;
+                            setData.append(Data);
+                        })
+                    }
+                }
+            })
+        });
+    });
+</script>
 
 

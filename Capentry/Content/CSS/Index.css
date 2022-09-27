@@ -40,21 +40,16 @@
 }
 .jumbotron .btn {
     /*background-color: initial;*/
-    border: none;
-    border-width: 2px;
-    border-color: black;
     position: center;
     /*color: white;*/
-    border-radius: 0px;
+    /*border-radius: 0px;*/
+    font-family: Roboto,sans-serif !important;
 }
 .jumbotron .btn:hover {
     /*background-color: initial;*/
-    border: none;
-    border-width: 2px;
-    border-color: black;
     position: center;
     /*color: white;*/
-    border-radius: 0px;
+    /*border-radius: 0px;*/
 }
 
 #Cats .container-fluid {
@@ -64,7 +59,54 @@
     margin-right: 0px;
     margin-left: 0px;
     margin-bottom: 100px;
-    padding: 0px 0px;
+    padding-left:150px;
+    padding-right:150px;
+}
+
+/* Mobile */
+#Cats .container-fluid {
+    height: auto;
+    width: 100%;
+    margin-top: 100px;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* Tablet */
+@media (min-width:600px) {
+    #Cats .container-fluid {
+        height: auto;
+        width: 100%;
+        margin-top: 100px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 100px;
+        padding-left: 75px;
+        padding-right: 75px;
+    }
+}
+
+/* Desktop */
+@media (min-width:900px) {
+    #Cats .container-fluid {
+        height: auto;
+        width: 100%;
+        margin-top: 100px;
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-bottom: 100px;
+        padding-left: 150px;
+        padding-right: 150px;
+    }
+}
+@media (min-width:325px) {
+    .box {
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
 #Cats img {
     width: auto;
@@ -72,7 +114,8 @@
     aspect-ratio:initial;
     /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
     min-width:250px;
-    max-height:600px;
+    max-height:550px;
+    border-radius:2px;
 }
 .row-no-gutters,.row {
 
