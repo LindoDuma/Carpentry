@@ -266,6 +266,7 @@
     <Content Include="Content\CSS\Images.css" />
     <Content Include="Content\CSS\Index.css" />
     <Content Include="Content\CSS\Layout.css" />
+    <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\Images\Kitchen.jpg" />
     <Content Include="Content\Images\TVUnit.jpg" />
     <Content Include="Content\Images\Wardrope.jpg" />

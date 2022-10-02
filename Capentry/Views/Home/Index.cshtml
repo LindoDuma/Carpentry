@@ -8,8 +8,8 @@
 <div class="jumbotron" id="Header">
     <div class="container">
         <h6>Welcome to BSLP Carpentry </h6>
-        <h5>Your Satisfaction is our top priority </h5>
-        <a class="btn btn-dark rounded-0 btn-lg" href="#links"><i class="fab fa-lg fa-whatsapp" style="color:white;"></i>  Talk To Us</a>
+        <h5>Your satisfaction is our top priority </h5>
+        <a class="btn btn-dark rounded-0 btn-lg " href="#links"><i class="fab fa-lg fa-whatsapp visually-hidden" style="color:inherit;"></i>  Talk To Us</a>
     </div>
 </div>
 <div id="Cats">
@@ -21,24 +21,64 @@
             <div class="col-lg-4" id="Description">
                 <h1>Built-In Kitchens</h1>
                 <p>Get the dream built in kitchen your always wanted from us at a competitve price.</p>
-                <a class="btn btn-dark btn-lg">See More</a>
+                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Kitchen" }, new { @class = "btn btn-dark btn-lg" });
             </div>
         </div>
     </div>
+
+    <div class="container-fluid m-0 p-4" id="Process">
+        <div class="row justify-content-center align-items-center flex-row">
+            <div class="col-7 p-1">
+                <h1 class="text-center">How We Work</h1>
+            </div>
+            <div class="col-10 p-1">
+                <div class="row justify-content-center">
+                    <div class="col-sm-7 col-md-6 col-lg-4" id="Step">
+                        <h2>1. Consultation</h2>
+                        <p>We meet up with you to take a look at your place and take the necessary measurements</p>
+                    </div>
+                    <div class="col-sm-7 col-md-6 col-lg-4" id="Step">
+                        <h2>2. Design</h2>
+                        <p>After we have all the measurement and your specifications, we design your product until you say satisfied with how it will look like</p>
+                    </div>
+                    <div class="col-sm-7 col-md-6 col-lg-4" id="Step">
+                        <h2>3. Work</h2>
+                        <p>We decide on a date for when we come to start working on your cabinets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid" id="Wardrope">
         <div class="row flex-sm-column-reverse flex-md-row-reverse flex-md-column-reverse flex-lg-row box">
             <div class="col-lg-4" id="Description">
-                <h1>Wardropes</h1>
+                <h1>Wardrobes</h1>
                 <p>
                     Get the dream built in kitchen your always wanted from us at a competitve price.
                 </p>
-                <a class="btn btn-dark btn-lg">See More</a>
+                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Wardrobe" }, new { @class = "btn btn-dark btn-lg" });
+
             </div>
             <div class="col-lg-8">
                 <img class="img img-fluid " src="~/Content/Images/Wardrope.jpg" />
             </div>
         </div>
     </div>
+
+    <div class="container-fluid m-0 p-4" id="About">
+        <div class="row justify-content-center align-items-center flex-row">
+            <div class="col-7 p-1">
+                <h1 class="text-center">About Us</h1>
+            </div>
+            <div class="col-sm-8 col-md-8 col-lg-8 p-1">
+                <p class="p-3">
+                    We have been proving our services since we got established in 2020. Over 50 built in kitchens, Warbdrpobes and TV Wall Units that we have built to the satisfaction of our customers. How this company was formed was that we realised that there is market for people who need built in cabinets, and we thought we should give it a try. At first we just wanted to build wardrobes for our selves.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid" id="TVUnit">
         <div class="row">
             <div class="col-lg-8">
@@ -47,7 +87,7 @@
             <div class="col-lg-4" id="Description">
                 <h1>TV Stand Units</h1>
                 <p>Get the dream built in kitchen your always wanted from us at a competitve price.</p>
-                <a class="btn btn-dark btn-lg">See More</a>
+                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "TVUnit" }, new { @class = "btn btn-dark btn-lg" })
             </div>
         </div>
     </div>

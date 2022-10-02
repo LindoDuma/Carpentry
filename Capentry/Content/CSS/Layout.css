@@ -1,7 +1,10 @@
-﻿html {
+﻿@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+html {
     overflow-x: hidden;
-    overflow-y:auto;
-    font-family:Roboto,sans-serif;
+    overflow-y: auto;
+    font-family: 'Open Sans', sans-serif;
+    scroll-behavior:smooth;
 }
 body {
     font-family: Roboto,sans-serif;
@@ -26,6 +29,8 @@ body {
 .navbar {
     background-color: black;
     border: none;
+    border-bottom:thick;
+    border-bottom-color:gold;
     padding-left: 10px;
     padding-right: 10px;
     font-family:Nunito,serif;
@@ -36,27 +41,55 @@ body {
     min-height:8vh;
 }
 
-navbar-toggler{
-    background-color:transparent;
-    border-radius:0px;
+.navbar-toggler {
+    opacity: 1;
+    border-radius: 0px;
+    color: white !important;
+    border-width:0 !important;
+    border: none;
+
 }
 .navbar-toggler:hover {
-    border-color: white;
-    background-color: transparent;
-    border-radius: 0px;
+    border-color: white !important;
+    background-color: transparent !important;
+    border-radius: 0;
+    opacity: 1;
+    border: none!important;
+    
 }
-.navbar-toggler:disabled {
-    border-color: white;
+.navbar-toggler:focus {
+    border-color: white !important;
     background-color: transparent;
     border-radius: 0px;
+    opacity: 1;
+    border: none!important;
+    box-shadow:none;
+}
+
+    .navbar-toggler:focus > .navbar-toggler-icon {
+        /*background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em no-repeat;*/
+        color: white;
+        font-family: FontAwesome;
+        content: "\f095";
+    }
+
+.navbar-toggler:disabled {
+    border-color: white !important;
+    background-color: transparent;
+    border-radius: 0px;
+    opacity: 1;
+    border: none!important;
 }
 .navbar-toggler:active {
-    border-color: white;
-    background-color: transparent;
+    border-color: white !important;
+    background-color: transparent !important;
     border-radius: 0px;
+    border: none!important;
+    opacity: 1;
 }
-.navbar span {
-    color: white !important;
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /*NABBAR BOOTSTRAP TEXT COLOR IS AROUND 4668*/
@@ -64,8 +97,8 @@ navbar-toggler{
 /*NAVBAR BRAND*/
 .navbar-inverse .navbar-brand {
     color: gold;
-    font-family: Pacifico, sans-serif;
-    font-size:xx-large;
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
@@ -115,27 +148,77 @@ footer .col-lg-4{
     margin-bottom:5px;
 }
 #links h5, #links h6, #links h4 {
-    color: gray;
+    color: dimgrey;
     font-size:x-large;
-    font-family:Roboto,sans-serif;
+    font-family:Ubuntu,serif;
     font-variant-caps:all-petite-caps;
+    font-weight:bolder;
+    /*text-decoration-line:underline;
+    text-underline-offset:8px;
+    text-decoration-color:gold;
+    text-decoration-thickness:4px;*/
 }
+
 #links {
     color: white;
     background-color: inherit;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
     font-family: Roboto,sans-serif;
+    font-size:20px;
+    letter-spacing:1.5px;
+    margin-bottom:10vh;
 }
-#nav{
-    
+
+/* Tablet */
+@media (min-width:600px) {
+    #links {
+        color: white;
+        background-color: inherit;
+        padding-left: 40px;
+        padding-right: 40px;
+        font-family: Roboto,sans-serif;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
 }
+
+/* Desktop */
+@media (min-width:900px) {
+    #links {
+        color: white;
+        background-color: inherit;
+        padding-left: 60px;
+        padding-right: 60px;
+        font-family: Roboto,sans-serif;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
+}
+
+#nav .nav-link{
+    font-family:Roboto,sans-serif;
+    font-variant-caps:all-petite-caps;
+    font-size:inherit;
+    font-weight:100;
+    letter-spacing:inherit;
+    transition:all 0.4s ease;
+}
+
+#nav .nav-link:hover{
+    color:gold!important;
+}
+
 #contacts li{
     display:flex;
     flex-direction:row;
 }
 #contacts p {
     font-family: Roboto,sans-serif;
+    font-variant-caps:all-petite-caps;
+    font-size: inherit;
+    letter-spacing: inherit;
+    font-weight:100!important;
 }
 
 #copy{
@@ -149,19 +232,45 @@ footer .col-lg-4{
     color: white;
     font-family: Roboto,sans-serif;
 }
+.email{
+    font-variant-caps:normal;
+    font-size:16px;
+}
 footer a {
     color: white;
     font-family: Roboto,sans-serif;
+    text-decoration:none;
 }
+
+footer a:hover{
+    color:lightgray;
+}
+
 /* Style all font awesome icons */
 .fab,.fas, far {
-    /*font-size: 40px;*/
+    font-size:22px!important;
     color: gold;
+    transition:all 0.3s ease;
 }
 
 /* Add a hover effect if you want */
 .fab:hover, .fas:hover, far :hover {
-    color:gray;
+    color: gold;
+}
+
+#social .fab, #social .fas, #social .far {
+    font-size: 28px !important;
+    text-align: center;
+    color: white;
+}
+
+#contacts .fas,#contacts .fab{
+    color:white;
+    font-size:18px !important;
+}
+
+#contacts .fas:hover, #contacts .fab:hover {
+    color: inherit;
 }
 
 .fa-facebook {
@@ -179,5 +288,9 @@ footer a {
     
 }
 .btn{
-    border-radius:0;
+    border-radius:0px;
+}
+.btn-dark{
+    background-color:black;
+    border-color:black;
 }
