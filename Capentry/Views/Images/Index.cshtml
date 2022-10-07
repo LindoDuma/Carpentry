@@ -20,11 +20,11 @@
         </div>
     }
 
-    @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3" }))
+    @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3 filters" }))
     {
         <div class="row g-2 flex-row">
             <div class="col-sm-4 col-md-2 col-lg-2">
-                @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter" , id="PTypes"})
+                @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes" })
             </div>
             <div class="col-sm-4 col-md-2 col-lg-2">
                 <input class="btn btn-outline-dark" type="submit" value="Filter" />
@@ -36,13 +36,20 @@
     {
         <div class="row" id="imageData">
 
-            @foreach (var item in Model)
-            {
-                <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
-                    <a href="~/Images/@item.ImageID">
-                        <img class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
-                    </a>
-                </div>
+            @{ 
+                var counter = 1;
+
+                foreach (var item in Model)
+                {
+
+                    <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
+                        <a onclick="openModal(); currentSlide(@counter)">
+                            <img class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
+                        </a>
+                    </div>
+
+                    counter = counter + 1;
+                }
             }
         </div>
     }
@@ -52,38 +59,76 @@
     }
 </div>
 
-@*<script>
-    $(document).ready(function () {
-        $("#PTypes").click(function () {
-            var ProjectType = $("ProjectType").val();
-            var searchValue = $("ProjectType").val();
-            var setData = $("imageData");
-            setData.html("");
+<div id="myModal" class="modal">
+    <div class="container-fluid fixed-top toolbar">
+        <div class="d-flex flex-row gap-2">
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+        </div>
+    </div>
+    <div class="modal-content">
 
-            $.ajax({
-                type = "post",
-                url = "/Images/GetImages?ProjectType=" + ProjectType + "&SearchValue" + searchValue,
-                contentType: "html",
-                success: function (result) {
-                    if (result.length == 0) {
-                        setData.append('<P> no data found<P/>')
-                    }
-                    else {
-                        $.each(result, function (index, value) {
-                            var Data = 
-                                '<div class="col-sm-5 col-md-4 col-lg-3 item p-2">'
-                    '<a href="~/Images/'+value.ImageID+'">'
-                        '<img class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com",' + value.ImagePath + '))/>'
-                    '</a>'
-                '</div>'
-                                ;
-                            setData.append(Data);
-                        })
-                    }
-                }
-            })
-        });
-    });
-</script>*@
+        @{ 
+
+            var counterModal = 1;
+
+            foreach (var item in Model)
+            {
+            <div class="mySlides">
+                <div class="numbertext">@counterModal / @Model.Count()</div>
+                <img id="LImage" class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
+            </div>
+
+            counterModal = counterModal + 1;
+            }
+        }
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script>
+    // Open the Modal
+    function openModal() {
+        document.getElementById("myModal").style.display = "flex";
+    }
+
+    // Close the Modal
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
 
 
