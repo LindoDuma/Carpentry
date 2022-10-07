@@ -1,14 +1,18 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+
+<link href="~/Content/CSS/Contact.css" rel="stylesheet" type="text/css" />
+
 <div class="container-fluid p-0 m-0">
-    <div class="container-fluid text-center p-5" style="font-family:Roboto,serif;">
+    <div class="container-fluid text-center p-5" id="title-container">
         <h1>@ViewBag.Title</h1>
         @*<h3>@ViewBag.Message</h3>*@
     </div>
-    <div class="row p-3">
-        <div class="col-lg-6">
-            <div class="col">
+    <div class="container-fluid m-0 p-sm-3 p-md-4 p-lg-5" id="content">
+        <h2 class="">Don't hesitate to gat in touch with us</h2>
+        <div class="row gap-1 p-sm-1 p-md-3 p-lg-5">
+            <div class="col-lg-5">
                 <h5>Find Us</h5>
                 <p>
                     <i class="fas fa-map-marker" style="font-size:25px;"></i>&nbsp;&nbsp;
@@ -29,21 +33,27 @@
                     <a href="mailto:lindoduma10@gmail.com">lindoduma10@gmail.com</a>
                 </p>
             </div>
-        </div>
-        <div class="col-lg-6">
-            <div id="googleMap" style="width:100%;height:400px;"></div>
-
-            <script>
-                function myMap() {
-                    var mapProp = {
-                        center: new google.maps.LatLng(-30.053782876917772, 30.83963491760937),
-                        zoom: 17,
-                    };
-                    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-                }
-            </script>
-
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8z3F4STCmkkiQvjwIWPnxUs7wee15q7k&callback=myMap"></script>
+            <div class="col-lg-5">
+                <h5>Follow Us</h5>
+                <p>
+                    <a href="facebook.com">
+                        <i class="fab fa-facebook" style="font-size:25px;"></i>&nbsp;&nbsp;
+                        Facebook
+                    </a>
+                </p>
+                <p>
+                    <a href="youtube.com">
+                        <i class="fab fa-youtube" style="font-size:25px;"></i>&nbsp;&nbsp;
+                        Youtube
+                    </a>
+                </p>
+                <p>
+                    <a href="instagram">
+                        <i class="fab fa-instagram" style="font-size:25px;"></i>&nbsp;&nbsp;
+                        Instagram
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
     @* Maybe add latest facebook post here later and other social media *@

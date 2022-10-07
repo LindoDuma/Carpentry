@@ -150,6 +150,19 @@ footer .col-lg-4{
     padding:5px;
     margin-bottom:5px;
 }
+
+.logo {
+    color: gold;
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
+}
+
+.logo:hover {
+    color: gold;
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
+}
+
 #links h5, #links h6, #links h4 {
     color: dimgrey;
     font-size:x-large;
@@ -301,6 +314,7 @@ footer a:hover{
     border-radius:0;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif !important;
     font-variant-caps: all-petite-caps;
+    /*color:gold !important;*/
 }
