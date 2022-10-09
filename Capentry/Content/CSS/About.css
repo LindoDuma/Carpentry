@@ -13,7 +13,7 @@ h1{
 }
 #title-container {
     background-color: whitesmoke;
-    background-image: url(../Images/background.jpg);
+    /*background-image: url(../Images/background.jpg);*/
     background-size: cover;
     background-position: center;
     height: 200px;
@@ -25,6 +25,10 @@ h1{
 
 #content{
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
+}
+#content img{
+    min-width:100%;
 }

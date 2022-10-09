@@ -8,7 +8,7 @@
 h1 {
     font-family: Roboto,sans-serif;
     font-size: 60px;
-    font-weight: 700;
+    font-weight: 600;
     font-variant-caps: all-petite-caps;
 }
 
@@ -32,7 +32,7 @@ p{
 
 #title-container {
     background-color: whitesmoke;
-    background-image:url(../Images/background.jpg);
+    /*background-image:url(../Images/background.jpg);*/
     background-size:cover;
     background-position:center;
     height: 200px;
@@ -43,9 +43,9 @@ p{
 }
 
 #content {
-    /*display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center;*/
+    align-items: center;
 }
 .row{
     min-width:480px;
