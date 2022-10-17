@@ -53,15 +53,23 @@
     color:inherit;
 }
 .jumbotron .btn {
-    font-family: Roboto,sans-serif !important;
+    font-family: Open Sans,sans-serif !important;
+    font-weight:700;
     font-variant-caps:all-petite-caps;
     font-size:x-large;
+    background-color:forestgreen;
+    border:none;
+    border-radius:50px !important;
+    transition:all 0.3s ease-in-out;
 }
 .jumbotron .btn:hover {
-    /*background-color: initial;*/
+    background-color: forestgreen;
     position: center;
-    /*color: white;*/
-    /*border-radius: 0px;*/
+    color: white;
+    border:none;
+    border-color:white;
+    transform:scale(1.05);
+    transition: all 0.3s ease-in-out;
 }
 
 #Cats .container-fluid {
@@ -192,7 +200,6 @@
 }
 
 #About {
-    background-color: goldenrod;
     background-image: linear-gradient(to right,darkgoldenrod,goldenrod);
     background-size: cover;
     color: white;

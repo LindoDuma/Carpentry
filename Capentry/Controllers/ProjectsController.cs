@@ -11,20 +11,24 @@ using Capentry.ViewModels;
 using CloudinaryDotNet;
 using System.IO;
 using CloudinaryDotNet.Actions;
+using System.ComponentModel.DataAnnotations;
 
 namespace Capentry.Controllers
 {
+    
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projects
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View(db.Projects.ToList());
         }
 
         // GET: Projects/Details/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,11 +44,13 @@ namespace Capentry.Controllers
         }
 
         // GET: Projects/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ProjectViewModel projectsViewModel)
@@ -68,6 +74,7 @@ namespace Capentry.Controllers
         }
 
         // GET: Projects/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +89,7 @@ namespace Capentry.Controllers
             return View(projects);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ProjectId,ProjectName,ProjectYear")] Projects projects)
@@ -96,6 +104,7 @@ namespace Capentry.Controllers
         }
 
         // GET: Projects/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -111,6 +120,7 @@ namespace Capentry.Controllers
         }
 
         // POST: Projects/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -5,41 +5,41 @@
     padding: 0;
 }
 
-h1 {
+#title-container h1 {
     font-family: Roboto,sans-serif;
     font-size: 60px;
     font-weight: 600;
     font-variant-caps: all-petite-caps;
 }
 
-h5 {
+#content h5 {
     font-family: Roboto,sans-serif;
     font-size: 25px;
     font-weight: 600;
     font-variant-caps: all-petite-caps;
 }
 
-h2{
+#content h2{
     font-weight:700;
     font-size:35px;
     text-align:center;
     display:none;
 }
 
-p{
+#content p{
     font-size:20px;
 }
 
 #title-container {
-    background-color: whitesmoke;
+    background-color: white;
     /*background-image:url(../Images/background.jpg);*/
     background-size:cover;
     background-position:center;
-    height: 200px;
+    height: 150px;
     display: flex;
     justify-content: center;
     align-content: center;
-    align-content: center;
+    align-items: center;
 }
 
 #content {

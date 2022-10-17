@@ -29,15 +29,17 @@
             </button>
             <div class="navbar-collapse collapse" id="nav_toggle_target">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item">@Html.ActionLink("Gallery", "Index", "Images", new object { }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Gallery", "Gallery", "Images", new object { }, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
                     <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
                     @if (User.IsInRole("Admin"))
                     {
+                        <li class="nav-item">@Html.ActionLink("Projects", "Index", "Projects", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Images", "Index", "Images", null, new { @class = "nav-link" })</li>
                         <li class="nav-item">@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "nav-link" })</li>
                     }
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </nav>

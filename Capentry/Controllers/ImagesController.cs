@@ -13,6 +13,7 @@ using CloudinaryDotNet.Actions;
 using Capentry.ViewModels;
 using System.Runtime.CompilerServices;
 using Microsoft.Ajax.Utilities;
+using System.ComponentModel.DataAnnotations;
 
 namespace Capentry.Controllers
 {
@@ -21,11 +22,35 @@ namespace Capentry.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ImageModels
+        [Authorize(Roles ="Admin")]
         public ActionResult Index(ProjectTypes? ProjectType)
         {
             ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
 
             ViewBag.ProjectType = new SelectList((ProjectTypes[])Enum.GetValues(typeof (ProjectTypes)), "ProjectTypes");
+
+            ViewBag.CurrentTab = ProjectType ?? null;
+
+            var imageList = db.ImageModels.ToList();
+
+            var projectList = db.Projects.Where(h => h.ProjectType == ProjectType).Select(b => b.ProjectID).ToList();
+
+            if (ProjectType != null)
+            {
+                imageList = db.ImageModels.Where(y => projectList.Contains(y.ProjectID)).ToList();
+            }
+
+            return View(imageList);
+        }
+
+        [AllowAnonymous]
+        public ActionResult Gallery(ProjectTypes? ProjectType)
+        {
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
+
+            ViewBag.ProjectType = new SelectList((ProjectTypes[])Enum.GetValues(typeof(ProjectTypes)), "ProjectTypes");
+
+            ViewBag.CurrentTab = ProjectType ?? null;
 
             var imageList = db.ImageModels.ToList();
 
@@ -40,6 +65,7 @@ namespace Capentry.Controllers
         }
 
         // GET: ImageModels/Create
+        [Authorize(Roles ="Admin")]
         [HttpGet]
         public ActionResult UploadImage()
         {
@@ -48,6 +74,7 @@ namespace Capentry.Controllers
             return View(imageViewModel);
         }
 
+        [Authorize(Roles ="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UploadImage(ImageViewModel imagesVM)
@@ -65,7 +92,6 @@ namespace Capentry.Controllers
 
                     string fileName = Path.GetFullPath(imagesVM.Files.FileName);
                     
-
                     var uploadParams = new ImageUploadParams()
                     {
                         File = new FileDescription(fileName,imagesVM.Files.InputStream),
