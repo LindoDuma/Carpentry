@@ -48,11 +48,13 @@
 
                     <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
                         <a onclick="openModal(); currentSlide(@counter)">
-                            <img class="img img-fluid" 
-                                 loading="lazy" 
-                                 src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) 
-                                 data-src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath))
-                                 alt="@item.ImageName" 
+                            <img class="img img-fluid lazy opacity-0" 
+                                 loading="eager" 
+                                 src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_50,q_10/@item.PublicID"
+                                 data-src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
+                                 alt="@item.ImageID" 
+                                 width="500"
+                                 height="500"
                             />
                         </a>
                     </div>
@@ -84,7 +86,7 @@
             {
                 <div class="mySlides">
                     <div class="numbertext">@counterModal / @Model.Count()</div>
-                    <img id="LImage" loading="lazy" class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
+                    <img id="LImage" loading="lazy" class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="Image not yet loaded" />
                 </div>
 
                 counterModal = counterModal + 1;
@@ -98,7 +100,23 @@
 </div>
 
 <script type="text/javascript">
-    
+    document.addEventListener("DOMContentLoaded", function () {
+        const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target
+                    console.log("lazy loading ", lazyImage)
+                    lazyImage.src = lazyImage.dataset.src
+                    lazyImage.classList.remove('opacity-0')
+                }
+            })
+
+        });
+        const arr = document.querySelectorAll('.lazy')
+        arr.forEach((v) => {
+            imageObserver.observe(v);
+        })
+    })
 </script>
 
 <script type="text/javascript">

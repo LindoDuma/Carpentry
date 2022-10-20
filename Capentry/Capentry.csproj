@@ -271,6 +271,7 @@
     <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\Kitchen.jpg" />
+    <Content Include="Content\Images\placeholder.jpg" />
     <Content Include="Content\Images\TVUnit.jpg" />
     <Content Include="Content\Images\Wardrope.jpg" />
     <Content Include="favicon.ico" />

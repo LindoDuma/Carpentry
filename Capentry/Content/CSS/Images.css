@@ -85,6 +85,7 @@ option:hover{
     object-fit:cover;
     transition:0.3s ease-in;
     transform:scale(1);
+    background-color:lightgray;
 }
 
 #Images img:hover {
