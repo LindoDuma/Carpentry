@@ -17,13 +17,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Capentry.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class ImagesController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ImageModels
-        [Authorize(Roles ="Admin")]
-        public ActionResult Index(ProjectTypes? ProjectType)
+        public ActionResult Index(int? ProjectId, ProjectTypes? ProjectType)
         {
             ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
 
@@ -38,6 +38,11 @@ namespace Capentry.Controllers
             if (ProjectType != null)
             {
                 imageList = db.ImageModels.Where(y => projectList.Contains(y.ProjectID)).ToList();
+            }
+
+            if (ProjectId != null)
+            {
+                imageList = db.ImageModels.Where(y => y.ProjectID == ProjectId).ToList();
             }
 
             return View(imageList);
@@ -65,7 +70,6 @@ namespace Capentry.Controllers
         }
 
         // GET: ImageModels/Create
-        [Authorize(Roles ="Admin")]
         [HttpGet]
         public ActionResult UploadImage()
         {
@@ -74,7 +78,6 @@ namespace Capentry.Controllers
             return View(imageViewModel);
         }
 
-        [Authorize(Roles ="Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult UploadImage(ImageViewModel imagesVM)
@@ -117,6 +120,120 @@ namespace Capentry.Controllers
             }
 
             return View(imagesVM);
+        }
+
+        // GET: Projects/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ImageProjectViewModel imagesVM = new ImageProjectViewModel();   
+
+            Images images = db.ImageModels.Find(id);
+
+            Projects projects = db.Projects.Where(y => y.ProjectID == images.ProjectID).FirstOrDefault();
+
+            imagesVM.images = images;
+            imagesVM.projects = projects;
+
+            if (images == null)
+            {
+                return HttpNotFound();
+            }
+            return View(imagesVM);
+        }
+
+        // GET: Projects/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Images images = db.ImageModels.Find(id);
+
+            ViewBag.Projects = new SelectList(db.Projects, "ProjectID", "ProjectName");
+
+            if (images == null)
+            {
+                return HttpNotFound();
+            }
+            return View(images);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "ImageID,ImageName,ImagePath,Project,ProjectID,PublicID")] Images images)
+        {
+            if (ModelState.IsValid)
+            {
+                //Images original = db.ImageModels.Where(i => i.ImageID == images.ImageID).FirstOrDefault();
+
+                //images = new Images { ImageID = images.ImageID,
+                //ImageName = images.ImageName,
+                //ImagePath = original.ImagePath,
+                //PublicID = original.PublicID,
+                //Project = images.Project,
+                //ProjectID = images.ProjectID};
+
+                db.Entry(images).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(images);
+        }
+
+        // GET: Projects/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Images images = db.ImageModels.Find(id);
+            if (images == null)
+            {
+                return HttpNotFound();
+            }
+            return View(images);
+        }
+
+        // POST: Projects/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Account account = new Account(
+                              "dfi0awyos",
+                              "593298893595769",
+                              "QLDO8_T6OQ1vwqvajZMb9m39OGw");
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
+            Images images = db.ImageModels.Find(id);
+
+            var deletionParams = new DeletionParams(images.PublicID)
+            {
+                PublicId = images.PublicID
+            };
+
+            cloudinary.Destroy(deletionParams);
+
+            db.ImageModels.Remove(images);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
         }
     }
 }

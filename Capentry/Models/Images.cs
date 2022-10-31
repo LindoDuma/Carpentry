@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace Capentry.Models
 {   
@@ -11,6 +12,8 @@ namespace Capentry.Models
     {
         [Key]
         public int ImageID { get; set; }
+
+        [DisplayName("Image Name")]
         public string ImageName { get; set; }
         public string ImagePath{ get; set; }
 

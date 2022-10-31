@@ -8,7 +8,7 @@
 }
 
 <div class="container-fluid p-0" id="head">
-    <h1 class="text-center p-3">Gallery</h1>
+    <h1 class="text-center p-3">Manage Images</h1>
 </div>
 
 <div class="container" id="Images">
@@ -20,28 +20,22 @@
         </div>
     }
     @* Dropdown filter - no ajax *@
-    @*@using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3 filters" }))
+    @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3 filters" }))
         {
-            <div class="row g-2 flex-row">
-                <div class="col-sm-4 col-md-2 col-lg-2">
+            <div class="row g-2 flex-row align-items-center">
+                <div class="col-sm-4 col-md-2 col-lg-3 d-flex flex-row align-items-center gap-2">
+                    <h6>Project:</h6>
+                    @Html.DropDownList("ProjectId", (SelectList)ViewBag.ProjectId, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes" })
+                </div>
+                <div class="col-sm-4 col-md-2 col-lg-3 d-flex flex-row align-items-center gap-2">
+                    <h6>Type:</h6>
                     @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes" })
                 </div>
                 <div class="col-sm-4 col-md-2 col-lg-2">
                     <input class="btn btn-outline-dark" type="submit" value="Filter" />
                 </div>
             </div>
-        }*@
-
-    <button class="btn btn-outline-dark filter-btn" type="button" onclick="tabs" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="filters">
-        Filter
-    </button>
-
-    <ul class="nav collapse nav-fill gap-2 p-0 m-0 mt-2 justify-content-evenly dont-collapse-sm" id="filters">
-        <li class="nav-item">@Html.ActionLink("All", "Index", "Images", new { ProjectType = "" }, new { @class = "nav-link btn btn-dark",id="All" })</li>
-        <li class="nav-item">@Html.ActionLink("Kitchens", "Index", "Images", new { ProjectType = "Kitchen" }, new { @class = "nav-link btn btn-dark", id = "Kitchen" })</li>
-        <li class="nav-item">@Html.ActionLink("Wardrobes", "Index", "Images", new { ProjectType = "Wardrobe" }, new { @class = "nav-link btn btn-dark", id = "Wardrobe" })</li>
-        <li class="nav-item">@Html.ActionLink("TV Units", "Index", "Images", new { ProjectType = "TVUnit" }, new { @class = "nav-link btn btn-dark", id = "TVUnit" })</li>
-    </ul>
+        }
 
     @if (Model.FirstOrDefault() != null)
     {
@@ -54,8 +48,16 @@
                 {
 
                     <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
-                        <a onclick="openModal(); currentSlide(@counter)">
-                            <img class="img img-fluid" loading="lazy" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
+                        <a @*onclick="openModal(); currentSlide(@counter)"*@ href="Details/@item.ImageID">
+                            <img 
+                                class="img img-fluid lazy"
+                                loading="eager"
+                                src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_50,q_10/@item.PublicID"
+                                data-src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
+                                alt="@item.ImageID"
+                                width="500"
+                                height="500" 
+                            />
                         </a>
                     </div>
 
@@ -162,5 +164,24 @@
         }
     }
 
+</script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target
+                    console.log("lazy loading ", lazyImage)
+                    lazyImage.src = lazyImage.dataset.src
+                    lazyImage.classList.remove('opacity-0')
+                }
+            })
+
+        });
+        const arr = document.querySelectorAll('.lazy')
+        arr.forEach((v) => {
+            imageObserver.observe(v);
+        })
+    })
 </script>
 

@@ -253,3 +253,28 @@ img.hover-shadow {
         min-width:100vw;
     }
 }
+/* DELETE */
+
+#delete h2{
+    font-weight:600;
+    font-size:60px;
+}
+
+.preview{
+    width:initial;
+    max-height:80vh;
+    aspect-ratio:initial;
+}
+
+.crud-container{
+    min-height: 90vh;
+}
+
+#edit h2 {
+    font-weight: 600;
+    font-size: 60px;
+}
+#detail h2 {
+    font-weight: 600;
+    font-size: 60px;
+}
