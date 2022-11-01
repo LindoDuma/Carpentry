@@ -4,31 +4,35 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<link href="~/Content/CSS/Projects.css" rel="stylesheet" type="text/css" />
 
-<div>
-    <h4>Projects</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectName)
-        </dt>
+<div class="row crud-container" id="detail">
+    <div class="col-lg-5">
+        <h2>Project Details</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjectName)
-        </dd>
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProjectName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectYear)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.ProjectName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProjectYear)
-        </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProjectYear)
+                </dt>
 
-    </dl>
+                <dd>
+                    @Html.DisplayFor(model => model.ProjectYear)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

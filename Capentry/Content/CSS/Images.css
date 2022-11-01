@@ -28,11 +28,20 @@
     color: white;
     padding-left: 0;
     padding-right: 0;
-    border: none
+    border: none;
 }
 
 #filters li{
     padding:0;
+}
+
+.filters h6{
+    font-size:22px !important;
+}
+
+#controls select {
+    background-color: white;
+    border: thin solid lightgray;
 }
 
 option{

@@ -5,8 +5,11 @@
     ViewBag.Title = "Projects";
 }
 
-<h2>Projects</h2>
+<link href="~/Content/CSS/Projects.css" rel="stylesheet" type="text/css" />
 
+<div class="container-fluid m-0 p-0" id="head">
+    <h2>Projects</h2>
+</div>
 @if(User.IsInRole("Admin")) {
     <p>
         @Html.ActionLink("Create New", "Create")
@@ -16,6 +19,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProjectName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ProjectYear)
@@ -29,12 +35,15 @@
             @Html.DisplayFor(modelItem => item.ProjectName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProjectYear)
+            @Html.DisplayFor(modelItem => item.ProjectType)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
+            @Html.DisplayFor(modelItem => item.ProjectYear)
+        </td>
+        <td class="d-flex flex-row gap-2">
+            @Html.ActionLink(" ", "Edit", new { id = item.ProjectID }, new {@class= "btn btn-success bi bi-pencil-fill", title="Edit" })
+            @Html.ActionLink(" ", "Details", new { id = item.ProjectID }, new { @class = "btn btn-primary bi bi-info-lg", title = "Details" })
+            @Html.ActionLink(" ", "Delete", new { id = item.ProjectID }, new { @class = "btn btn-danger bi bi-x-lg", title = "Delete" })
         </td>
     </tr>
 }

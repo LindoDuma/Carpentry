@@ -13,29 +13,22 @@
 
 <div class="container" id="Images">
 
-    @if (User.IsInRole("Admin"))
-    {
-        <div class="container-fluid">
-            @Html.ActionLink("  Upload Image", "UploadImage", null, new { @class = "btn btn-dark btn bi bi-upload" })
-        </div>
-    }
     @* Dropdown filter - no ajax *@
-    @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3 filters" }))
+
+    <div class="filters d-flex flex-lg-row flex-md-row flex-sm-column gap-lg-4 mb-4" id="controls">
+        @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "d-flex gap-2 flex-row align-items-center col-lg-3 col-md-3 col-sm-4" }))
         {
-            <div class="row g-2 flex-row align-items-center">
-                <div class="col-sm-4 col-md-2 col-lg-3 d-flex flex-row align-items-center gap-2">
-                    <h6>Project:</h6>
-                    @Html.DropDownList("ProjectId", (SelectList)ViewBag.ProjectId, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes" })
-                </div>
-                <div class="col-sm-4 col-md-2 col-lg-3 d-flex flex-row align-items-center gap-2">
-                    <h6>Type:</h6>
-                    @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes" })
-                </div>
-                <div class="col-sm-4 col-md-2 col-lg-2">
-                    <input class="btn btn-outline-dark" type="submit" value="Filter" />
-                </div>
-            </div>
+            <h6>Type</h6>
+            @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes", onchange = "this.form.submit();" })
         }
+
+        @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "d-flex gap-2 flex-row align-items-center col-lg-3 col-md-3 col-sm-4" }))
+        {
+            <h6>Project</h6>
+            @Html.DropDownList("ProjectId", (SelectList)ViewBag.ProjectId, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PId", onchange = "this.form.submit();" })
+        }
+        @Html.ActionLink("  Upload Image", "UploadImage", null, new { @class = "btn btn-dark btn bi bi-upload ms-auto" })
+    </div>
 
     @if (Model.FirstOrDefault() != null)
     {
@@ -49,15 +42,13 @@
 
                     <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
                         <a @*onclick="openModal(); currentSlide(@counter)"*@ href="Details/@item.ImageID">
-                            <img 
-                                class="img img-fluid lazy"
-                                loading="eager"
-                                src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_50,q_10/@item.PublicID"
-                                data-src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
-                                alt="@item.ImageID"
-                                width="500"
-                                height="500" 
-                            />
+                            <img class="img img-fluid lazy"
+                                 loading="eager"
+                                 src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_50,q_10/@item.PublicID"
+                                 data-src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
+                                 alt="@item.ImageID"
+                                 width="500"
+                                 height="500" />
                         </a>
                     </div>
 
