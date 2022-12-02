@@ -198,41 +198,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202208102131200_InitialCreate.cs" />
-    <Compile Include="Migrations\202208102131200_InitialCreate.designer.cs">
-      <DependentUpon>202208102131200_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208131327251_FullName.cs" />
-    <Compile Include="Migrations\202208131327251_FullName.designer.cs">
-      <DependentUpon>202208131327251_FullName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208231100407_Images.cs" />
-    <Compile Include="Migrations\202208231100407_Images.designer.cs">
-      <DependentUpon>202208231100407_Images.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208300920545_Updated Images Table name.cs" />
-    <Compile Include="Migrations\202208300920545_Updated Images Table name.designer.cs">
-      <DependentUpon>202208300920545_Updated Images Table name.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202208301519256_IDK.cs" />
-    <Compile Include="Migrations\202208301519256_IDK.designer.cs">
-      <DependentUpon>202208301519256_IDK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209011340502_ForeignKeyError.cs" />
-    <Compile Include="Migrations\202209011340502_ForeignKeyError.designer.cs">
-      <DependentUpon>202209011340502_ForeignKeyError.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209011346313_ForeignKeyError1.cs" />
-    <Compile Include="Migrations\202209011346313_ForeignKeyError1.designer.cs">
-      <DependentUpon>202209011346313_ForeignKeyError1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209011401217_MoreKeys.cs" />
-    <Compile Include="Migrations\202209011401217_MoreKeys.designer.cs">
-      <DependentUpon>202209011401217_MoreKeys.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202209041307256_Next.cs" />
-    <Compile Include="Migrations\202209041307256_Next.designer.cs">
-      <DependentUpon>202209041307256_Next.cs</DependentUpon>
+    <Compile Include="Migrations\202212021031263_initial.cs" />
+    <Compile Include="Migrations\202212021031263_initial.designer.cs">
+      <DependentUpon>202212021031263_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -248,6 +216,10 @@
     <Compile Include="ViewModels\ProjectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database1.mdf" />
+    <Content Include="App_Data\Database1_log.ldf">
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -372,7 +344,6 @@
     <Content Include="Views\Images\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Views\ApplicationBase\" />
   </ItemGroup>
   <ItemGroup>
@@ -381,32 +352,8 @@
     <Content Include="Scripts\jquery-3.6.0.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202208102131200_InitialCreate.resx">
-      <DependentUpon>202208102131200_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208131327251_FullName.resx">
-      <DependentUpon>202208131327251_FullName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208231100407_Images.resx">
-      <DependentUpon>202208231100407_Images.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208300920545_Updated Images Table name.resx">
-      <DependentUpon>202208300920545_Updated Images Table name.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202208301519256_IDK.resx">
-      <DependentUpon>202208301519256_IDK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209011340502_ForeignKeyError.resx">
-      <DependentUpon>202209011340502_ForeignKeyError.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209011346313_ForeignKeyError1.resx">
-      <DependentUpon>202209011346313_ForeignKeyError1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209011401217_MoreKeys.resx">
-      <DependentUpon>202209011401217_MoreKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202209041307256_Next.resx">
-      <DependentUpon>202209041307256_Next.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202212021031263_initial.resx">
+      <DependentUpon>202212021031263_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

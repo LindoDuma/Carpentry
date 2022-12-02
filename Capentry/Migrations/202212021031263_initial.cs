@@ -3,10 +3,35 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Images",
+                c => new
+                    {
+                        ImageID = c.Int(nullable: false, identity: true),
+                        ImageName = c.String(),
+                        ImagePath = c.String(),
+                        PublicID = c.String(),
+                        ProjectID = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ImageID)
+                .ForeignKey("dbo.Projects", t => t.ProjectID, cascadeDelete: true)
+                .Index(t => t.ProjectID);
+            
+            CreateTable(
+                "dbo.Projects",
+                c => new
+                    {
+                        ProjectID = c.Int(nullable: false, identity: true),
+                        ProjectName = c.String(),
+                        ProjectYear = c.Int(nullable: false),
+                        ProjectType = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ProjectID);
+            
             CreateTable(
                 "dbo.AspNetRoles",
                 c => new
@@ -35,6 +60,8 @@
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -83,17 +110,21 @@
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Images", "ProjectID", "dbo.Projects");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Images", new[] { "ProjectID" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Projects");
+            DropTable("dbo.Images");
         }
     }
 }

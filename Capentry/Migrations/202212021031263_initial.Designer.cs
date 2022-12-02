@@ -7,13 +7,13 @@ namespace Capentry.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class ForeignKeyError : IMigrationMetadata
+    public sealed partial class initial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ForeignKeyError));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
         
         string IMigrationMetadata.Id
         {
-            get { return "202209011340502_ForeignKeyError"; }
+            get { return "202212021031263_initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -10,7 +10,6 @@
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Capentry.Models.ApplicationDbContext";
         }
 
         protected override void Seed(Capentry.Models.ApplicationDbContext context)
