@@ -1,9 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-@* <connectionStrings>
-      <add name="Connection" connectionString="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=C:\Users\Lindokuhle\source\repos\Capentry\Capentry\App_Data\aspnet-Capentry-20220810080250.mdf;Initial Catalog=aspnet-Capentry-20220810080250;Integrated Security=True" providerName="System.Data.SqlClient" />
-    </connectionStrings> *@
+
 <head>
     <link href="~/Content/CSS/Index.css" rel="stylesheet" type="text/css" />
 </head>
@@ -23,7 +21,7 @@
             <div class="col-lg-4" id="Description">
                 <h1>Built-In Kitchens</h1>
                 <p>Get the dream built in kitchen your always wanted from us at a competitve price.</p>
-                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Kitchen" }, new { @class = "btn btn-dark btn-lg" });
+                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Kitchen" }, new { @class = "btn btn-dark btn-lg" })
             </div>
         </div>
     </div>
@@ -77,7 +75,7 @@
                 <p>
                     Get the dream built in kitchen your always wanted from us at a competitve price.
                 </p>
-                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Wardrobe" }, new { @class = "btn btn-dark btn-lg" });
+                @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Wardrobe" }, new { @class = "btn btn-dark btn-lg" })
 
             </div>
             <div class="col-lg-8">
