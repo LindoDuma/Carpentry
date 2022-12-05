@@ -12,29 +12,19 @@
 </div>
 
 <div class="container" id="Images">
-    @* Dropdown filter - no ajax *@
-    @*@using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "p-3 filters" }))
-        {
-            <div class="row g-2 flex-row">
-                <div class="col-sm-4 col-md-2 col-lg-2">
-                    @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes" })
-                </div>
-                <div class="col-sm-4 col-md-2 col-lg-2">
-                    <input class="btn btn-outline-dark" type="submit" value="Filter" />
-                </div>
-            </div>
-        }*@
 
     <button class="btn btn-outline-dark filter-btn" type="button" onclick="tabs" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="filters">
-        Filter
+        <i class="bi bi-filter"></i> &nbsp; Filter
     </button>
 
-    <ul class="nav collapse nav-fill gap-2 p-0 m-0 mt-2 nav-justified dont-collapse-sm" id="filters">
-        <li class="nav-item">@Html.ActionLink("All", "Gallery", "Images", new { ProjectType = "" }, new { @class = "nav-link btn btn-dark", id = "All" })</li>
-        <li class="nav-item">@Html.ActionLink("Kitchens", "Gallery", "Images", new { ProjectType = "Kitchen" }, new { @class = "nav-link btn btn-dark", id = "Kitchen" })</li>
-        <li class="nav-item">@Html.ActionLink("Wardrobes", "Gallery", "Images", new { ProjectType = "Wardrobe" }, new { @class = "nav-link btn btn-dark", id = "Wardrobe" })</li>
-        <li class="nav-item">@Html.ActionLink("TV Units", "Gallery", "Images", new { ProjectType = "TVUnit" }, new { @class = "nav-link btn btn-dark", id = "TVUnit" })</li>
-    </ul>
+    <div class="w-100 justify-content-center collapse dont-collapse-sm" id="filters">
+        <ul class="nav gap-2 p-0 m-0 mt-2 links-dir" >
+            <li class="nav-item">@Html.ActionLink("All", "Gallery", "Images", new { ProjectType = "" }, new { @class = "nav-link btn btn-dark", id = "All" })</li>
+            <li class="nav-item">@Html.ActionLink("Kitchens", "Gallery", "Images", new { ProjectType = "Kitchen" }, new { @class = "nav-link btn btn-dark", id = "Kitchen" })</li>
+            <li class="nav-item">@Html.ActionLink("Wardrobes", "Gallery", "Images", new { ProjectType = "Wardrobe" }, new { @class = "nav-link btn btn-dark", id = "Wardrobe" })</li>
+            <li class="nav-item">@Html.ActionLink("TV Units", "Gallery", "Images", new { ProjectType = "TVUnit" }, new { @class = "nav-link btn btn-dark", id = "TVUnit" })</li>
+        </ul>
+    </div>
 
     @if (Model.FirstOrDefault() != null)
     {

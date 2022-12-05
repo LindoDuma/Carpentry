@@ -14,25 +14,32 @@
     align-items:center;
 }
 #filters a.nav-link {
-    background-color:whitesmoke;
+    background-color: transparent;
     color:black;
-    padding-left:0;
-    padding-right:0;
-    border:none
+    padding-left:20px;
+    padding-right:20px;
+    border:thin solid lightgray;
+    border-radius:50px;
+    transition:all 0.3s ease-in-out;
 }
 #filters a.nav-link:hover {
+    background-color: whitesmoke;
     color: black;
+    border: thin solid whitesmoke;
+    border-radius: 50px;
+    transition:all 0.3s ease-in-out;
 }
 #filters a.nav-link.active {
     background-color: goldenrod;
     color: white;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 20px;
+    padding-right: 20px;
     border: none;
+    transition: all 0.3s ease-in-out;
 }
 
 #filters li{
-    padding:0;
+    padding:0px;
 }
 
 .filters h6{
@@ -59,20 +66,60 @@ option:hover{
         height: auto !important;
         visibility: visible;
     }
+
+    .links-dir {
+        flex-direction: row;
+    }
+
     .filter-btn{
         visibility:hidden;
         display:none;
     }
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .collapse.dont-collapse-sm {
         flex-direction:column;
-        gap:0!important;
+    }
+
+    .links-dir {
+        flex-direction: column;
+        gap: 3px !important;
     }
 
     .filter-btn {
         display: flex;
-        width:100%;
+        justify-content:center;
+        align-items:center;
+        width: 100%;
+        border:thin solid whitesmoke;
+        background-color:whitesmoke;
+    }
+
+    /*other links are defined for bigger screens above*/
+    #filters a.nav-link {
+        background-color: transparent;
+        color: black;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: thin solid lightgray;
+        border-radius: 0px;
+        transition: all 0.3s ease-in-out;
+    }
+    #filters a.nav-link:hover {
+        background-color: transparent;
+        color: black;
+        border: thin solid lightgray;
+        border-radius: 0px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    #filters a.nav-link.active {
+        background-color: goldenrod;
+        color: white;
+        padding-left: 20px;
+        padding-right: 20px;
+        border: none;
+        transition: all 0.3s ease-in-out;
     }
 }
 
