@@ -314,7 +314,7 @@ footer a:hover{
     border-radius:0;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans', sans-serif !important;
-    font-variant-caps: all-petite-caps;
-    /*color:gold !important;*/
+    font-family: 'Open Sans', sans-serif;
+    text-transform:uppercase;
+    color:black;
 }

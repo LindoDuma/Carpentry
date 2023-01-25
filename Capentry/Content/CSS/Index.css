@@ -36,17 +36,16 @@
     
 }
 .jumbotron h6{
-    font-size:60px;
-    color:black;
-    font-family:Ubuntu,serif;
+    /*causes problems if screen is small and text is large*/
+    font-size:50px;
+    font-family:Ubuntu,serif !important;
     font-weight:lighter;
     font-variant-caps:normal;
     color:inherit;
 }
 
 .jumbotron h5 {
-    font-size: 35px;
-    color: black;
+    font-size: 25px;
     font-family: Nunito,serif;
     font-weight: lighter;
     font-variant-caps: all-petite-caps;
@@ -96,7 +95,7 @@
 }
 
 /* Tablet */
-@media (min-width:600px) {
+@media (min-width:430px) {
     #Cats .container-fluid {
         height: auto;
         width: 100%;
@@ -104,8 +103,19 @@
         margin-right: 0px;
         margin-left: 0px;
         margin-bottom: 100px;
-        padding-left: 75px;
-        padding-right: 75px;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .jumbotron h6 {
+        /*causes problems if screen is small and text is large*/
+        font-size: 60px;
+        color: inherit;
+    }
+
+    .jumbotron h5 {
+        font-size: 32px;
+        color: inherit;
     }
 }
 
@@ -118,8 +128,19 @@
         margin-right: 0px;
         margin-left: 0px;
         margin-bottom: 100px;
-        padding-left: 150px;
-        padding-right: 150px;
+        padding-left: 120px;
+        padding-right: 120px;
+    }
+
+    .jumbotron h6 {
+        /*causes problems if screen is small and text is large*/
+        font-size: 75px;
+        color: inherit;
+    }
+
+    .jumbotron h5 {
+        font-size: 40px;
+        color: inherit;
     }
 }
 @media (min-width:325px) {
@@ -137,20 +158,10 @@
     max-height:550px;
     border-radius:2px;
 }
-.row-no-gutters,.row {
-
-}
-.col-sm-6, .col-sm-4, .col-sm-7, .col-sm-3, .col-sm-8, .col {
-    padding: 40px;
-}
-
-.col-lg-6, .col-lg-4, .col-lg-7, .col-lg-3, .col-lg-8, .col {
-    padding: 40px;
-}
 
 #Description {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
     padding-top: 20px;
     padding-bottom: 20px;
     text-align:justify-all;
@@ -190,9 +201,28 @@
 #Description h1 {
     color: black;
     font-weight:900;
-    font-size: 60px;
+    font-size: 35px;
     font-variant-caps:normal;
 }
+
+@media (min-width:768px) {
+    #Description h1 {
+        color: black;
+        font-weight: 900;
+        font-size: 55px;
+        font-variant-caps: normal;
+    }
+}
+
+@media (min-width:900px) {
+    #Description h1 {
+        color: black;
+        font-weight: 900;
+        font-size: 60px;
+        font-variant-caps: normal;
+    }
+}
+
 #Description p {
     color: black;
     font-size: x-large;
@@ -200,23 +230,40 @@
 }
 
 #About {
-    background-image: linear-gradient(to right,darkgoldenrod,goldenrod);
+    background-color:whitesmoke;
+    background-image: linear-gradient(to left,whitesmoke,white);
     background-size: cover;
-    color: white;
+    color: black;
 }
 #About h1{
-    font-size: 60px;
+    font-size: 35px;
     font-weight:900;
     font-family:Roboto,sans-serif;
+}
+
+@media (min-width:768px) {
+    #About h1 {
+        font-size: 50px;
+        font-weight: 900;
+        font-family: Roboto,sans-serif;
+    }
+}
+
+@media (min-width:900px) {
+    #About h1 {
+        font-size: 60px;
+        font-weight: 900;
+        font-family: Roboto,sans-serif;
+    }
 }
 #About p{
     font-size:21px;
 }
 #Process {
-    background-color: goldenrod;
-    background-image: linear-gradient(to right,goldenrod,darkgoldenrod);
+    background-color: whitesmoke;
+    background-image: linear-gradient(to right,whitesmoke,white);
     background-size: cover;
-    color: white;
+    color: black;
 }
 
 #Step{
@@ -244,11 +291,13 @@
 
 .step-image {
     width: auto !important;
-    height: 95px !important;
+    height: 80px !important;
     aspect-ratio: initial;
     min-width:25px !important;
     max-height: 400px;
     margin-bottom:30px;
+    color:gold;
+    display:none;
 }
 
 #arrow {
@@ -268,12 +317,12 @@
 }
 
 #arrow span{
-    color:inherit !important;
+    color:lightgray !important;
     font-size:30px !important;
 }
 
 #Process h1 {
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 900;
     font-family: Roboto,sans-serif;
 }
@@ -286,6 +335,70 @@
     font-variant-caps:all-petite-caps;
 }
 
+@media (min-width:768px) {
+    #Process h1 {
+        font-size: 50px;
+        font-weight: 900;
+        font-family: Roboto,sans-serif;
+    }
+}
+
+@media (min-width:900px) {
+    #Process h1 {
+        font-size: 60px;
+        font-weight: 900;
+        font-family: Roboto,sans-serif;
+    }
+}
+
 #Process p {
     font-size: large;
+}
+
+/*Animation*/
+
+.boxy {
+    transition: transform 0.5s, opacity 0.7s;
+}
+
+.header-animation {
+    transition: transform 0.7s, opacity 1.5s;
+}
+
+.header-animation.fade-in{
+    opacity:0;
+}
+
+.boxy.left {
+    transform: translateX(-200px);
+    opacity: 0;
+}
+
+.boxy.right {
+    transform: translateX(200px);
+    opacity: 0;
+}
+
+.boxy.top {
+    transform: translateY(-200px) rotate(360deg);
+    opacity: 0;
+}
+
+.boxy.bottom {
+    transform: translateY(200px) scaleX(3);
+    opacity: 0;
+}
+
+.boxy.fade-in{
+    opacity: 0;
+}
+
+.boxy.active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.header-animation.active {
+    transform: translateX(0);
+    opacity: 1;
 }

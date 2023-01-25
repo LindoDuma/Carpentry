@@ -1,58 +1,123 @@
-﻿@{
+﻿@model Capentry.ViewModels.ContactViewModel
+@{
     ViewBag.Title = "Contact Us";
 }
 
 <link href="~/Content/CSS/Contact.css" rel="stylesheet" type="text/css" />
 
 <div class="container-fluid p-0 m-0">
-    <div class="container-fluid text-center p-5" id="title-container">
+    <div class="container-fluid text-center" id="title-container">
         <h1>@ViewBag.Title</h1>
         @*<h3>@ViewBag.Message</h3>*@
     </div>
-    <div class="container-fluid m-0 p-sm-3 p-md-4 p-lg-5" id="content">
-        <h2 class="">Don't hesitate to gat in touch with us</h2>
-        <div class="row gap-5 p-sm-1 p-md-3 p-lg-5">
-            <div class="col-lg-5">
+    <div class="container-fluid m-0" id="content">
+        <div class="row gap-lg-5 gap-md-2 gap-sm-1 justify-content-center flex-row-reverse">
+
+            <div class="col-lg-4">
+
+                <h4 class="mb-4">Get In Touch</h4>
+
                 <h5>Find Us</h5>
-                <p>
+                <p class="mb-4">
                     <i class="fas fa-map-marker" style="font-size:25px;"></i>&nbsp;&nbsp;
                     Reeves Rd. Abaphehli Bhekulwandle, Amanzimtoti 4126
                 </p>
                 <h5>Give Us A Call</h5>
                 <p>
                     <i class="fas fa-phone" style="font-size:25px;"></i>&nbsp;&nbsp;
-                    0727500762
+                    <a href="tel:+27796603553" target="_blank">+27 79 660 3553</a>
                 </p>
-                <p>
+                <p class="mb-4">
                     <i class="fab fa-whatsapp" style="font-size:25px;"></i>&nbsp;&nbsp;
-                    0727500762
+                    <a href="https://wa.me/27796603553" target="_blank">+27 79 660 3553</a>
                 </p>
                 <h5>Email Support</h5>
-                <p>
+                <p class="mb-4">
                     <i class="fas fa-envelope" style="font-size:25px;"></i>&nbsp;&nbsp;
                     <a href="mailto:lindoduma10@gmail.com">lindoduma10@gmail.com</a>
                 </p>
-            </div>
-            <div class="col-lg-5">
+
                 <h5>Follow Us</h5>
                 <p>
-                    <a href="facebook.com">
+                    <a href="https://www.facebook.com/people/BSLP-Carpentry-Services/100072568594688/" target="_blank">
                         <i class="fab fa-facebook" style="font-size:25px;"></i>&nbsp;&nbsp;
                         Facebook
                     </a>
                 </p>
-                <p>
+                <p class="d-none">
                     <a href="youtube.com">
                         <i class="fab fa-youtube" style="font-size:25px;"></i>&nbsp;&nbsp;
                         Youtube
                     </a>
                 </p>
-                <p>
+                <p class="d-none">
                     <a href="instagram">
                         <i class="fab fa-instagram" style="font-size:25px;"></i>&nbsp;&nbsp;
                         Instagram
                     </a>
                 </p>
+            </div>
+            <div class="col-sm-5 col-md-5 col-lg-7 d-flex flex-row">
+                @*<img class="img-fluid img" src="~/Content/Images/5579058.jpg"/>*@
+
+                <div class="contact-box align-self-end">
+
+                    <div class="form-header d-flex justify-content-center flex-column">
+                        <h1>Contact Us</h1>
+                    </div>
+
+                    @using (Html.BeginForm("ContactForm", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Subject, new { @class = "control-label col-md-2" })
+
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            @Html.LabelFor(model => model.Body, new { @class = "control-label col-md-2" })
+
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(model => model.Body, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="mb-3 d-none">
+                            @Html.LabelFor(model => model.Attachment, new { @class = "control-label col-md-2" })
+
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(model => model.Attachment, new { @class = "form-control", type = "file" })
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="col-md-12 d-flex justify-content-center">
+                                <input type="submit" value="Send" class="send btn btn-dark"/>
+                            </div>
+                        </div>
+                    </div>
+                        <br />
+                        <span style="color:green">@ViewBag.Message</span>
+                    }
+                </div>
             </div>
         </div>
     </div>

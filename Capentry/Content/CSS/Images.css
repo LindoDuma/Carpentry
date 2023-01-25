@@ -124,10 +124,10 @@ option:hover{
 }
 
 #head h1 {
-    font-family: Roboto,sans-serif;
+    font-family: Ubuntu,sans-serif;
     font-size: 60px;
-    font-weight: 700;
-    font-variant-caps: all-petite-caps;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 #Images{
     background-color:inherit;
@@ -333,4 +333,13 @@ img.hover-shadow {
 #detail h2 {
     font-weight: 600;
     font-size: 60px;
+}
+
+#Upload{
+    min-height:90vh;
+}
+
+#previewColumn img{
+    width:400px;
+    height:auto;
 }

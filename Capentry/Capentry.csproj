@@ -211,6 +211,7 @@
     <Compile Include="Models\ProjectTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\ImageProjectViewModel.cs" />
     <Compile Include="ViewModels\ImageViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModel.cs" />
@@ -243,14 +244,11 @@
     <Content Include="Content\CSS\Index.css" />
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\CSS\Login.css" />
+    <Content Include="Content\Images\5579058.jpg" />
     <Content Include="Content\Images\background.jpg" />
-    <Content Include="Content\Images\drill-icon.png" />
-    <Content Include="Content\Images\kitchen-icon.png" />
     <Content Include="Content\Images\Kitchen.jpg" />
-    <Content Include="Content\Images\measuring-tape-icon.png" />
     <Content Include="Content\Images\placeholder.jpg" />
     <Content Include="Content\Images\TVUnit.jpg" />
-    <Content Include="Content\Images\user-comment-icon.png" />
     <Content Include="Content\Images\Wardrope.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

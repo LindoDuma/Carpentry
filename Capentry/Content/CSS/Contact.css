@@ -6,54 +6,95 @@
 }
 
 #title-container h1 {
-    font-family: Roboto,sans-serif;
+    font-family: Ubuntu,sans-serif;
     font-size: 60px;
-    font-weight: 600;
-    font-variant-caps: all-petite-caps;
+    font-weight: 500;
+    text-transform:uppercase;
+    color:inherit;
 }
 
 #content h5 {
     font-family: Roboto,sans-serif;
-    font-size: 25px;
+    font-size: 17px;
     font-weight: 600;
-    font-variant-caps: all-petite-caps;
+    text-transform:uppercase;
+    display:none;
 }
 
 #content h2{
     font-weight:700;
-    font-size:35px;
+    font-size:30px;
     text-align:center;
     display:none;
 }
 
 #content p{
-    font-size:20px;
+    font-size:18px;
+}
+
+.form-header h1{
+    font-size:30px;
+    text-align:center;
 }
 
 #title-container {
     background-color: white;
-    /*background-image:url(../Images/background.jpg);*/
+    background-image:url(../Images/Kitchen.jpg);
     background-size:cover;
     background-position:center;
-    height: 150px;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
+    color:white;
 }
 
 #content {
     display: flex;
     justify-content: center;
     align-items: center;
+    /*margin-top:80px;
+    margin-bottom:80px;*/
 }
-.row{
-    min-width:480px;
+
+#content .row {
+    margin-top: 80px;
+    margin-bottom:80px;
 }
+
 #content a{
     text-decoration:none;
     color:black;
 }
 #content a:hover{
     color:gold;
+}
+
+.form-header{
+    margin-bottom:20px;
+}
+
+.contact-box {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-right: 50px;
+    padding-left: 50px;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+input, select, textarea {
+    max-width: 500px !important; 
+}
+label{
+    font-size:17px;
+    font-weight:500;
+    text-transform:uppercase;
+}
+
+.send{
+    width:100%;
 }

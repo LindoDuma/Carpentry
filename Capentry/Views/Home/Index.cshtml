@@ -7,20 +7,20 @@
 </head>
 <div class="jumbotron" id="Header">
     <div class="container">
-        <h6>Welcome to BSLP Carpentry </h6>
-        <h5>Your satisfaction is our top priority </h5>
-        <a class="btn btn-dark rounded-0 btn-lg " href="#links"><p class="mb-1" href="#"><i class="fab fa-lg fa-whatsapp" style="color:inherit;"></i>  Whatsapp</p></a>
+        <h6 class="scroll-reveal header-animation fade-in">Welcome to BSLP Carpentry </h6>
+        <h5 class="scroll-reveal header-animation fade-in">Your satisfaction is our top priority </h5>
+        <a class="btn btn-dark rounded-0 btn-lg d-none scroll-reveal boxy fade-in" href="#links"><p class="mb-1" href="#"><i class="fab fa-lg fa-whatsapp" style="color:inherit;"></i>  Whatsapp</p></a>
     </div>
 </div>
 <div id="Cats">
     <div class="container-fluid" id="Kitchen">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 scroll-reveal boxy fade-in">
                 <img class="img img-fluid " src="~/Content/Images/Kitchen.jpg" />
             </div>
-            <div class="col-lg-4" id="Description">
+            <div class="col-lg-4 scroll-reveal boxy fade-in" id="Description">
                 <h1>Built-In Kitchens</h1>
-                <p>Get the dream built in kitchen your always wanted from us at a competitve price.</p>
+                <p>Get the dream built in kitchen you always wanted from us at a competitve price.</p>
                 @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Kitchen" }, new { @class = "btn btn-dark btn-lg" })
             </div>
         </div>
@@ -29,10 +29,10 @@
     <div class="container-fluid m-0 p-4" id="Process">
         <div class="row justify-content-center align-items-center flex-row">
             <div class="col-7 p-1">
-                <h1 class="text-center">How We Work</h1>
+                <h1 class="text-center">Our Process</h1>
             </div>
             <div class="col-12 p-1">
-                <div class="row gap-2 flex-sm-column flex-md-column flex-lg-row justify-content-center align-content-center align-items-center">
+                <div class="row gap-2 flex-sm-column flex-md-column flex-lg-row justify-content-center align-content-center">
                     <div class="col-sm-7 col-md-6 col-lg-3" id="Step">
                         <div class="step-card">
                             <img class="align-self-center step-image" width="100" height="100" src="~/Content/Images/user-comment-icon.png" />
@@ -70,15 +70,15 @@
 
     <div class="container-fluid" id="Wardrope">
         <div class="row flex-sm-column-reverse flex-md-row-reverse flex-md-column-reverse flex-lg-row box">
-            <div class="col-lg-4" id="Description">
+            <div class="col-lg-4 scroll-reveal boxy fade-in" id="Description">
                 <h1>Wardrobes</h1>
                 <p>
-                    Get the dream built in kitchen your always wanted from us at a competitve price.
+                    Built in wardropes and walk-in closets,designed for your needs and lifesytle.
                 </p>
                 @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "Wardrobe" }, new { @class = "btn btn-dark btn-lg" })
 
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8 scroll-reveal boxy fade-in">
                 <img class="img img-fluid " src="~/Content/Images/Wardrope.jpg" />
             </div>
         </div>
@@ -99,14 +99,46 @@
 
     <div class="container-fluid" id="TVUnit">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-8 scroll-reveal boxy fade-in">
                 <img class="img img-fluid " src="~/Content/Images/TVUnit.jpg" />
             </div>
-            <div class="col-lg-4" id="Description">
+            <div class="col-lg-4 scroll-reveal boxy fade-in" id="Description">
                 <h1>TV Stand Units</h1>
-                <p>Get the dream built in kitchen your always wanted from us at a competitve price.</p>
+                <p>
+                    We can build either floating tv units or standing ones, depending on your taste.
+                </p>
                 @Html.ActionLink("See More", "Index", "Images", new { ProjectType = "TVUnit" }, new { @class = "btn btn-dark btn-lg" })
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function scrollTrigger(selector) {
+        let els = document.querySelectorAll(selector)
+        els = Array.from(els)
+        els.forEach(el => {
+            addObserver(el)
+        })
+    }
+    function addObserver(el) {
+        // We are creating a new IntersectionObserver instance
+        let observer = new IntersectionObserver((entries, observer) => { // This takes a callback function that receives two arguments: the elements list and the observer instance.
+            entries.forEach(entry => {
+                // `entry.isIntersecting` will be true if the element is visible
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active')
+                    // We are removing the observer from the element after adding the active class
+                    observer.unobserve(entry.target)
+                }
+            })
+        })
+        // Adding the observer to the element
+        observer.observe(el)
+    }
+    // Example usage
+    scrollTrigger('.intro-text')
+    scrollTrigger('.scroll-reveal', {
+        rootMargin: '-300px',
+    })
+</script>
