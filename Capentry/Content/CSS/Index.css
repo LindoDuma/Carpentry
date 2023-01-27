@@ -20,7 +20,7 @@
     background-image:url("/Content/Images/Kitchen.jpg");
     background-attachment: fixed;
     background-size: cover;
-    min-height:60vh;
+    min-height:90vh;
     display:flex;
     flex-direction:column;
     align-content:center;
@@ -52,22 +52,22 @@
     color:inherit;
 }
 .jumbotron .btn {
-    font-family: Open Sans,sans-serif !important;
-    font-weight:700;
+    font-family: Roboto,sans-serif !important;
+    font-weight:100;
     font-variant-caps:all-petite-caps;
-    font-size:x-large;
-    background-color:forestgreen;
+    font-size:30px;
+    background-color: black;
     border:none;
-    border-radius:50px !important;
+    border-radius:0px !important;
     transition:all 0.3s ease-in-out;
 }
 .jumbotron .btn:hover {
-    background-color: forestgreen;
+    background-color: black;
     position: center;
     color: white;
     border:none;
     border-color:white;
-    transform:scale(1.05);
+    transform:scale(1.02);
     transition: all 0.3s ease-in-out;
 }
 
@@ -152,11 +152,16 @@
 #Cats img {
     width: auto;
     height: auto;
-    aspect-ratio:initial;
+    aspect-ratio: initial;
     /*box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;*/
-    min-width:250px;
-    max-height:550px;
-    border-radius:2px;
+    min-width: 250px;
+    max-height: 550px;
+    border-radius: 2px;
+    transition: transform 0.4s;
+}
+
+#Cats img:hover {
+    transform:scale(1.01);
 }
 
 #Description {
@@ -187,7 +192,7 @@
 }
 
 #Cats .btn {
-    background-color: black;
+    background-color: goldenrod;
     border: none;
     align-self: center;
     border-radius: 0px;
@@ -197,18 +202,20 @@
     border: none;
     border-color: black;
     border-radius: 0px;
+    color:white;
 }
 #Description h1 {
     color: black;
-    font-weight:900;
+    font-weight:500;
     font-size: 35px;
     font-variant-caps:normal;
+    margin-bottom: 20px;
 }
 
 @media (min-width:768px) {
     #Description h1 {
         color: black;
-        font-weight: 900;
+        font-weight: 500;
         font-size: 55px;
         font-variant-caps: normal;
     }
@@ -217,8 +224,8 @@
 @media (min-width:900px) {
     #Description h1 {
         color: black;
-        font-weight: 900;
-        font-size: 60px;
+        font-weight: 500;
+        font-size: 68px;
         font-variant-caps: normal;
     }
 }
@@ -230,11 +237,17 @@
 }
 
 #About {
-    background-color:whitesmoke;
-    background-image: linear-gradient(to left,whitesmoke,white);
+    background-color: #FBFCFA;
+    /*background-image: linear-gradient(to left,white,white);*/
     background-size: cover;
     color: black;
 }
+
+#About h3 {
+    font-weight: 100;
+    color: goldenrod;
+}
+
 #About h1{
     font-size: 35px;
     font-weight:900;
@@ -260,8 +273,8 @@
     font-size:21px;
 }
 #Process {
-    background-color: whitesmoke;
-    background-image: linear-gradient(to right,whitesmoke,white);
+    background-color: #FBFCFA;
+    /*background-image: linear-gradient(to right,white,white);*/
     background-size: cover;
     color: black;
 }
@@ -321,15 +334,21 @@
     font-size:30px !important;
 }
 
+#Process h3 {
+    font-weight: 100;
+    color: goldenrod;
+}
+
 #Process h1 {
     font-size: 40px;
     font-weight: 900;
     font-family: Roboto,sans-serif;
+    color: black;
 }
 
 #Process h2 {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 100;
     font-family: Ubuntu,sans-serif;
     text-align:center;
     font-variant-caps:all-petite-caps;
@@ -358,11 +377,11 @@
 /*Animation*/
 
 .boxy {
-    transition: transform 0.5s, opacity 0.7s;
+    transition: transform 2s, opacity 1.5s;
 }
 
 .header-animation {
-    transition: transform 0.7s, opacity 1.5s;
+    transition: transform 0.7s, opacity 2.5s;
 }
 
 .header-animation.fade-in{
@@ -370,12 +389,12 @@
 }
 
 .boxy.left {
-    transform: translateX(-200px);
+    transform: translateX(-1000px);
     opacity: 0;
 }
 
 .boxy.right {
-    transform: translateX(200px);
+    transform: translateX(1000px);
     opacity: 0;
 }
 
