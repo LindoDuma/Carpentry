@@ -13,7 +13,7 @@ namespace Capentry.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202212021031263_initial"; }
+            get { return "202302201518387_initial"; }
         }
         
         string IMigrationMetadata.Source

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Capentry.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class RolesController : ApplicationBaseController
     {
         ApplicationDbContext context;
