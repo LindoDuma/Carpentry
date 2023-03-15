@@ -12,6 +12,7 @@ namespace Capentry
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            createRolesandUsers();
         }
 
         // In this method we will create default User roles and Admin user for login    
@@ -32,7 +33,7 @@ namespace Capentry
                 role.Name = "Admin";
                 roleManager.Create(role);
 
-                //Here we create a Admin super user who will maintain the website                   
+                //Here we get my account                   
 
                 var user = new ApplicationUser();
                 
@@ -41,7 +42,7 @@ namespace Capentry
                 //Add default User to Role Admin    
                 if (user != null)
                 {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
+                    UserManager.AddToRole(user.Id, "Admin");
 
                 }
             }

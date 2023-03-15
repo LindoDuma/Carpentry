@@ -331,6 +331,12 @@
     display:none;
 }
 
+.step-number{
+    color: lightslategray;
+    font-size: 50px;
+    align-self: center;
+}
+
 #arrow {
     width: 30px;
     height: 30px;
