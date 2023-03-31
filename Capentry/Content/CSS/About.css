@@ -1,0 +1,40 @@
+﻿body {
+}
+
+.body-content{
+    padding:0;
+}
+
+#title-container h1 {
+    font-family: Ubuntu,sans-serif;
+    font-size: 60px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color:white;
+}
+#title-container {
+    background-color:white;
+    background-image:url(../Images/Kitchen.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-content: center;
+    color:white;
+}
+
+#content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    margin-top:80px;
+}
+#content img{
+    min-width:100%;
+}
+#content p{
+    font-size:larger;
+}

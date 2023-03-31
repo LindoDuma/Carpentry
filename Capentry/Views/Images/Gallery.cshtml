@@ -1,0 +1,178 @@
+﻿@model IEnumerable<Capentry.Models.Images>
+@using Microsoft.AspNet.Identity
+
+<link href="~/Content/CSS/Images.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Gallery";
+}
+
+<div class="container-fluid p-0" id="head">
+    <h1 class="text-center p-3">Gallery</h1>
+</div>
+
+<div class="container" id="Images">
+
+    <button class="btn btn-outline-dark filter-btn" type="button" onclick="tabs" data-bs-toggle="collapse" data-bs-target="#filters" aria-expanded="false" aria-controls="filters">
+        <i class="bi bi-filter"></i> &nbsp; Filter
+    </button>
+
+    <div class="w-100 justify-content-center collapse dont-collapse-sm" id="filters">
+        <ul class="nav gap-2 p-0 m-0 mt-2 links-dir" >
+            <li class="nav-item">@Html.ActionLink("All", "Gallery", "Images", new { ProjectType = "" }, new { @class = "nav-link btn btn-dark", id = "All" })</li>
+            <li class="nav-item">@Html.ActionLink("Kitchens", "Gallery", "Images", new { ProjectType = "Kitchen" }, new { @class = "nav-link btn btn-dark", id = "Kitchen" })</li>
+            <li class="nav-item">@Html.ActionLink("Wardrobes", "Gallery", "Images", new { ProjectType = "Wardrobe" }, new { @class = "nav-link btn btn-dark", id = "Wardrobe" })</li>
+            <li class="nav-item">@Html.ActionLink("TV Units", "Gallery", "Images", new { ProjectType = "TVUnit" }, new { @class = "nav-link btn btn-dark", id = "TVUnit" })</li>
+        </ul>
+    </div>
+
+    @if (Model.FirstOrDefault() != null)
+    {
+        <div class="row g-3" id="imageData">
+
+            @{
+                var counter = 1;
+
+                foreach (var item in Model)
+                {
+
+                    <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
+                        <a onclick="openModal(); currentSlide(@counter)">
+                            <img class="img img-fluid lazy opacity-0" 
+                                 loading="eager" 
+                                 src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_50,q_10/@item.PublicID"
+                                 data-src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
+                                 alt="@item.ImageID" 
+                                 width="500"
+                                 height="500"
+                            />
+                        </a>
+                    </div>
+
+                    counter = counter + 1;
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <h2 class="text-center align-self-center m-5 p-5">There are no images to show yet</h2>
+    }
+</div>
+
+<div id="myModal" class="modal">
+    <div class="container-fluid fixed-top toolbar">
+        <div class="d-flex flex-row gap-2">
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+        </div>
+    </div>
+    <div class="modal-content">
+
+        @{
+
+            var counterModal = 1;
+
+            foreach (var item in Model)
+            {
+                <div class="mySlides">
+                    <div class="numbertext">@counterModal / @Model.Count()</div>
+                    <img id="LImage" loading="lazy" class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="Image not yet loaded" />
+                </div>
+
+                counterModal = counterModal + 1;
+            }
+        }
+    </div>
+
+    <!-- Next/previous controls -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target
+                    console.log("lazy loading ", lazyImage)
+                    lazyImage.src = lazyImage.dataset.src
+                    lazyImage.classList.remove('opacity-0')
+                }
+            })
+
+        });
+        const arr = document.querySelectorAll('.lazy')
+        arr.forEach((v) => {
+            imageObserver.observe(v);
+        })
+    })
+</script>
+
+<script type="text/javascript">
+    // Open the Modal
+    function openModal() {
+        document.getElementById("myModal").style.display = "flex";
+    }
+
+    // Close the Modal
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        var captionText = document.getElementById("caption");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+<script type="text/javascript">
+    setTimeout(tabs, 1);
+    setTimeout(allTab,2);
+    function tabs() {
+
+        if (document.getElementsByClassName('active').length == 0) {
+            if ('@ViewBag.CurrentTab' != null || '@ViewBag.CurrentTab' != "") {
+                document.getElementById("All").classList.remove('active');
+                document.getElementById("@ViewBag.CurrentTab").classList.add('active');
+            }
+            else if ('@ViewBag.CurrentTab' == null || '@ViewBag.CurrentTab' == ""){
+                document.getElementById("All").classList.add('active');
+            }
+        }
+    }
+    function allTab() {
+        if ('@ViewBag.CurrentTab' == null || '@ViewBag.CurrentTab' == "") {
+            document.getElementById("All").classList.add('active');
+        }
+    }
+
+</script>
+
+
+

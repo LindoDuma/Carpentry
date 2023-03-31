@@ -1,160 +1,320 @@
-﻿html {
-    height: 100%;
-    width: 100%;
+﻿@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+html {
     overflow-x: hidden;
-    overflow-y:auto;
-    margin-bottom: 0px;
-    min-height: 100vh;
-    font-family:Roboto,sans-serif;
+    overflow-y: auto;
+    font-family: 'Open Sans', sans-serif;
+    scroll-behavior:smooth;
 }
 body {
+    font-family: Roboto,sans-serif;
     margin: 0px;
     border: 0px;
     padding-left: 0px;
     padding-right: 0px;
     padding-bottom: 0px;
+    /*For the navbar*/
+    padding-top: 10vh;
     min-height: 100vh;
+    background-color:inherit;
 }
 .body-content {
-    margin: 0px;
-    border: none;
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0;
-    min-height:100%;
+    min-height:90vh;
+    background-color:inherit;
 }
 #main{
     margin:0;
     padding:0;
-    min-height:63vh;
+    /*min-height:63vh;*/
     min-width:100%;
+    background-color:inherit;
 }
 .navbar {
     background-color: black;
     border: none;
+    border-bottom:thick;
+    border-bottom-color:gold;
     padding-left: 10px;
     padding-right: 10px;
     font-family:Nunito,serif;
-    /*padding-top:0px;
-    padding-bottom:0px;*/
-    /*min-height: 80px;*/
+    
 }
-.navbar-toggle{
-    border:none;
-    border-style:none;
-    border-color:gold;
+
+.navbar .container {
+    min-height:8vh;
 }
-.navbar-toggle:hover {
+
+.navbar-toggler {
+    opacity: 1;
+    border-radius: 0px;
+    color: white !important;
+    border-width:0 !important;
     border: none;
-    border-style:none;
-    border-color: gold;
-    background-color:black;
-    color:gold;
+
 }
-.navbar-toggle:active {
-    border: none;
-    border-style: none;
-    border-color: gold;
-    background-color:black;
-    color:gold;
+.navbar-toggler:hover {
+    border-color: white !important;
+    background-color: transparent !important;
+    border-radius: 0;
+    opacity: 1;
+    border: none!important;
+    
 }
-.navbar .container-fluid {
-    /*margin-top: auto;
-    margin-bottom: auto;*/
-    /*min-height:80px;*/
+.navbar-toggler:focus {
+    border-color: white !important;
+    background-color: transparent;
+    border-radius: 0px;
+    opacity: 1;
+    border: none!important;
+    box-shadow:none;
 }
-/*NABBAR BOOTSTRAP TEXT COLORS ARE AROUND 4668*/
+
+    .navbar-toggler:focus > .navbar-toggler-icon {
+        /*background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em no-repeat;*/
+        color: white;
+        font-family: FontAwesome;
+        content: "\f095";
+    }
+
+.navbar-toggler:disabled {
+    border-color: white !important;
+    background-color: transparent;
+    border-radius: 0px;
+    opacity: 1;
+    border: none!important;
+}
+.navbar-toggler:active {
+    border-color: white !important;
+    background-color: transparent !important;
+    border-radius: 0px;
+    border: none!important;
+    opacity: 1;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/*NABBAR BOOTSTRAP TEXT COLOR IS AROUND 4668*/
 
 /*NAVBAR BRAND*/
 .navbar-inverse .navbar-brand {
-    color: white;
-    font-family: Pacifico;
+    color: gold;
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
 }
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
     color: gold;
     background-color: transparent;
+    font-size:xx-large;
+}
+
+.nav .nav-item{
+    padding-left:15px;
+    padding-right:15px;
 }
 /*NAVBAR LINKS*/
-.navbar-inverse .navbar-nav > li > a {
-    color: white;
+.navbar-nav > li > a {
+    color: white !important;
+    text-align: center;
+    font-size:large !important;
+    letter-spacing:3px;
+    font-variant-caps:all-petite-caps;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-    color: gold;
+    color: gold !important;
     background-color: transparent;
+}
+
+.navbar-nav > li{
+    padding-left:5px;
+    padding-right:5px;
 }
 /*FOOTER*/
 footer {
     margin: 0px;
-    margin-top:auto;
+    margin-top: auto;
+    margin-bottom: 0px;
     padding: 0px;
+    padding-top: 30px;
     border: none;
-    background-color: #0d0d0d;
-    bottom:0;
-    width:100%;
+    background-color: black;
+    bottom: 0;
+    width: 100%;
+    font-family:Roboto,sans-serif;
 }
-footer .col-sm-4{
-    padding:0px;
+footer .col-lg-4{
+    padding:5px;
     margin-bottom:5px;
 }
-#links{
-    color:white;
-    padding-left: 100px;
-    padding-right: 100px;
+
+.logo {
+    color: gold;
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
 }
-#nav{
-    
+
+.logo:hover {
+    color: gold;
+    font-family: 'Dancing Script', cursive;
+    font-size: xx-large;
 }
+
+#links h5, #links h6, #links h4 {
+    color: dimgrey;
+    font-size:x-large;
+    font-family:Ubuntu,serif;
+    font-variant-caps:all-petite-caps;
+    font-weight:bolder;
+    /*text-decoration-line:underline;
+    text-underline-offset:8px;
+    text-decoration-color:gold;
+    text-decoration-thickness:4px;*/
+}
+
+#links {
+    color: white;
+    background-color: inherit;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Roboto,sans-serif;
+    font-size:20px;
+    letter-spacing:1.5px;
+    margin-bottom:10vh;
+}
+
+/* Tablet */
+@media (min-width:600px) {
+    #links {
+        color: white;
+        background-color: inherit;
+        padding-left: 40px;
+        padding-right: 40px;
+        font-family: Roboto,sans-serif;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* Desktop */
+@media (min-width:900px) {
+    #links {
+        color: white;
+        background-color: inherit;
+        padding-left: 60px;
+        padding-right: 60px;
+        font-family: Roboto,sans-serif;
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
+}
+
+#nav .nav-link{
+    font-family:Roboto,sans-serif;
+    font-variant-caps:all-petite-caps;
+    font-size:inherit;
+    font-weight:100;
+    letter-spacing:inherit;
+    transition:all 0.4s ease;
+}
+
+#nav .nav-link:hover{
+    color:gold!important;
+}
+
 #contacts li{
     display:flex;
     flex-direction:row;
 }
+#contacts p {
+    font-family: Roboto,sans-serif;
+    font-variant-caps:all-petite-caps;
+    font-size: inherit;
+    letter-spacing: inherit;
+    font-weight:100!important;
+}
+
 #copy{
     background-color:black;
     padding-top: 5px;
     padding-bottom: 5px;
 }
-#copy p{
-    text-align:center;
-    color:white;
-}
-footer a{
-    color:white;
-}
-/* Style all font awesome icons */
-.fa {
-    padding: 20px;
-    font-size: 40px;
-    width: 50px;
+#copy p {
+    margin: auto;
     text-align: center;
-    text-decoration: none;
-    border-radius:50%;
-    height:50px;
-    background-color:dimgrey;
+    color: white;
+    font-family: Roboto,sans-serif;
+}
+.email{
+    font-variant-caps:normal;
+    font-size:16px;
+}
+footer a {
+    color: white;
+    font-family: Roboto,sans-serif;
+    text-decoration:none;
+}
+
+footer a:hover{
+    color:lightgray;
+}
+
+/* Style all font awesome icons */
+.fab,.fas, far {
+    font-size:22px!important;
+    color: gold;
+    transition:all 0.3s ease;
 }
 
 /* Add a hover effect if you want */
-.fa:hover {
-    opacity: 0.7;
+.fab:hover, .fas:hover, far :hover {
+    color: gold;
+}
+
+#social .fab, #social .fas, #social .far {
+    font-size: 28px !important;
+    text-align: center;
+    color: white;
+}
+
+#contacts .fas,#contacts .fab{
+    color:white;
+    font-size:18px !important;
+}
+
+#contacts .fas:hover, #contacts .fab:hover {
+    color: inherit;
 }
 
 .fa-facebook {
-    background: #3B5998;
-    color: white;
+    
 }
 
 .fa-whatsapp {
-    background: #55ACEE;
-    color: lightgreen;
+    
 }
 
 .fa-instagram {
-    background: pink;
-    color: white;
+    
 }
 .fa-phone {
-    background: gold;
-    color: white;
+    
+}
+.btn{
+    border-radius:0px;
+}
+.btn-dark{
+    background-color:black;
+    border-color:black;
+}
+.form-control{
+    border-radius:0;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+    text-transform:uppercase;
+    color:black;
 }

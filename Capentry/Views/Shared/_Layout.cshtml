@@ -3,99 +3,109 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Carpentry</title>
+    <link rel="shortcut icon" type="image/ico" href="~/Content/Images/Icon.jpg">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/CSS/Layout.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Ubuntu|Pacifico|Roboto" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Ubuntu|Pacifico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     @*@Styles.Render("~/Content/CSS/Index.css")*@
     @*<link href="~/Content/CSS/Index.css" rel="stylesheet" type="text/css" />*@
 
 </head>
 <body>
     @using Microsoft.AspNet.Identity
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" title="more options">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("BSLP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-center navbar-nav">
-                    <li>@Html.ActionLink("Payment", "Payment", "Home", new object { }, new { @class = "navbar-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "navbar-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "navbar-link" })</li>
+    <nav class="navbar navbar-inverse navbar-dark navbar-expand-lg fixed-top" role="navigation">
+        <div class="container">
+            @Html.ActionLink("BSLP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav_toggle_target" aria-controls="#nav_toggle_target" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse" id="nav_toggle_target">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Gallery", "Gallery", "Images", new object { }, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
+                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "navbar-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Projects", "Index", "Projects", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Images", "Index", "Images", null, new { @class = "nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Roles", "Index", "Roles", null, new { @class = "nav-link" })</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </nav>
     <div class="container-fluid body-content">
         <div class="container" id="main">
             @RenderBody()
         </div>
-        <footer id="footer">
-            <div class="container" id="links">
-                <div class="row">
-                    <div class="col-sm-4" id="social">
-
-                        <h3>Follow Us</h3>
-                        <ul class="list-inline">
-                            <li><a class="fa fa-facebook" href="https://www.facebook.com"></a></li>
-                            <li><a class="fa fa-whatsapp" href="https://www.facebook.com"></a></li>
-                            <li><a class="fa fa-instagram" href="https://www.facebook.com"></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-4" id="contacts">
-                        <h3>Contacts</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="fa fa-phone"></span>
-                                <div class="detail">
-                                    <h4>Give us a call</h4>
-                                    <p> 0727500762</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-4" id="nav">
-                        <h3>Useful Links</h3>
-                        <ul class="nav">
-                            <li><a href="~/Home/Index">Home</a></li>
-                            <li><a href="~/Home/Index">Payment</a></li>
-                            <li><a href="~/Home/Index">About Us</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="container-fluid" id="copy">
-                <p>&copy; @DateTime.Now.Year - BSLP Carpentry</p>
-            </div>
-        </footer>
 
     </div>
+    <footer id="footer" class="">
+        <div class="container" id="links">
+            <div class="row">
+                <div class="col-lg-4" id="social">
 
+                    @Html.Label("BSLP", new { @class = "navbar-brand logo d-flex align-self-center text-center mb-1" })
+
+                    <h5>Follow Us</h5>
+                    <ul class="list-inline">
+                        <li class="list-inline-item text-center">
+                            <a target="_blank" href="https://www.facebook.com/people/BSLP-Carpentry-Services/100072568594688/"><i class="fab fa-lg fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item text-center d-none">
+                            <a target="_blank" href="https://www.youtube.com"><i class="fab fa-lg fa-youtube"></i></a>
+                        </li>
+                        <li class="list-inline-item text-center d-none">
+                            <a target="_blank" href="https://www.instagram.com"><i class="fab fa-lg fa-instagram"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4" id="nav">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled link-light">
+                        <li class="nav-item mb-1"><a class="nav-link link-light" href="~/Home/Index">Home</a></li>
+                        <li class="nav-item mb-1"><a class="nav-link link-light" href="~/Images/Index">Gallery</a></li>
+                        <li class="nav-item mb-1"><a class="nav-link link-light" href="~/Home/Index">Payment</a></li>
+                        <li class="nav-item mb-1"><a class="nav-link link-light" href="~/Home/Index">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4" id="contacts">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <p class="mb-1"><i class="fas fa-lg fa-phone"></i> &nbsp;&nbsp; <a href="tel:+27796603553" target="_blank">+27 79 660 3553</a></p>
+                        </li>
+
+                        <li>
+                            <p class="mb-1">
+                                <i class="fab fa-lg fa-whatsapp"></i> &nbsp;&nbsp; <a href="https://wa.me/27796603553" target="_blank">+27 79 660 3553</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p class="mb-1">
+                                <i class="fas fa-lg fa-envelope" style="font-size:25px;"></i>
+                                &nbsp;&nbsp;<a class="email" href="mailto:lindoduma10@gmail.com">lindoduma10@gmail.com</a>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-3" id="copy">
+            <p>&copy; @DateTime.Now.Year &nbsp; BSLP Carpentry</p>
+        </div>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    @*<script>
-        $(document).ready(function () {
-            var docHeight = $(window).height();
-            var footerHeight = $('#footer').height();
-            var footerTop = $('#footer').position().top + footerHeight;
-
-            if (footerTop < docHeight) {
-                $('#footer').css('margin-top', 20 + (docHeight - footerTop) + 'px');
-            }
-        });
-    </script>*@
 </body>
 </html>

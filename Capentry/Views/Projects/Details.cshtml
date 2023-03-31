@@ -1,0 +1,38 @@
+﻿@model Capentry.Models.Projects
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="~/Content/CSS/Projects.css" rel="stylesheet" type="text/css" />
+
+<div class="row crud-container" id="detail">
+    <div class="col-lg-5">
+        <h2>Project Details</h2>
+
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProjectName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProjectName)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ProjectYear)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ProjectYear)
+                </dd>
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+    </div>
+</div>

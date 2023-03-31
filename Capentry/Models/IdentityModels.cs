@@ -33,6 +33,10 @@ namespace Capentry.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<Capentry.Models.Images> ImageModels { get; set; }
+
+        public System.Data.Entity.DbSet<Capentry.Models.Projects> Projects { get; set; }
+
         //public System.Data.Entity.DbSet<Capentry.Models.ApplicationUser> ApplicationUsers { get; set; }
 
     }

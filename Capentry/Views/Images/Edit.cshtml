@@ -1,0 +1,70 @@
+﻿@model Capentry.Models.Images
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<link href="~/Content/CSS/Images.css" rel="stylesheet" type="text/css" />
+
+<div class="row g-0 align-items-center align-content-center justify-content-center crud-container" id="edit">
+    <div class="col-lg-4 p-4">
+        <h2>Edit</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ImageID)
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ImageName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImageName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ImageName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2", hidden = "true" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", hidden = "true" } })
+                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.LabelFor(model => model.PublicID, htmlAttributes: new { @class = "control-label col-md-2", hidden = "true" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PublicID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", hidden = "true" } })
+                @Html.ValidationMessageFor(model => model.PublicID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="mb-3">
+            @Html.Label("Project", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ProjectID, (SelectList)ViewBag.Projects,
+                        "Select", new { @class = "form-select" })
+                @Html.ValidationMessage("Please Select Photo")
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-dark" />
+            </div>
+        </div>
+    </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index",null,new {@class="text-decoration-none"})
+        </div>
+    </div>
+
+    <div class="col-lg-7 p-3">
+        <img class="img img-fluid preview" loading="lazy" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", Model.ImagePath)) alt="" />
+    </div>
+</div>
