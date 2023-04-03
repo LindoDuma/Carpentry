@@ -245,6 +245,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\CSS\About.css" />
+    <Content Include="Content\CSS\Account.css" />
     <Content Include="Content\CSS\Contact.css" />
     <Content Include="Content\CSS\Projects.css" />
     <Content Include="Content\CSS\Images.css" />

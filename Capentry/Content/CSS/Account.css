@@ -1,0 +1,52 @@
+﻿body {
+}
+
+#header-container{
+
+}
+
+#main-container {
+    margin-top: 20px;
+    height: 90vh;
+    /*display: flex;
+    flex-direction: column;*/
+}
+
+#the-row{
+    height: 100%;
+    /*border: thin solid lightgrey;*/
+}
+
+.header-text{
+    font-family: Roboto, sans-serif;
+    font-size: 45px;
+    font-weight: 500;
+}
+
+.message{
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+#text-container {
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border: thin solid lightgrey;
+    border-radius: 6px;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+#main{
+    min-height: inherit;
+}
+
