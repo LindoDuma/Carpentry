@@ -3,35 +3,45 @@
     ViewBag.Title = "Verify";
 }
 
-<h2>@ViewBag.Title.</h2>
+<head>
+    <link href="~/Content/CSS/Account.css" rel="stylesheet" type="text/css" />
+</head>
 
-@using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
-    @Html.AntiForgeryToken()
-    @Html.Hidden("provider", @Model.Provider)
-    @Html.Hidden("rememberMe", @Model.RememberMe)
-    <h4>Enter verification code</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
-    <div class="mb-3">
-        @Html.LabelFor(m => m.Code, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+<div class="container-fluid" id="main-container">
+    <div class="row flex-column justify-content-center align-content-center" id="the-row">
+        <div class="col-sm-8 col-md-8 col-lg-5" id="text-container">
+            @using (Html.BeginForm("VerifyCode", "Account", new { ReturnUrl = Model.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("provider", @Model.Provider)
+                @Html.Hidden("rememberMe", @Model.RememberMe)
+                <h2 class="text-center header-text">@ViewBag.Title</h2>
+                <h4 class="text-center">Enter verification code</h4>
+                <hr />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="mb-3">
+                    @Html.LabelFor(m => m.Code, new { @class = "col-md-2 control-label" })
+                    <div class="col">
+                        @Html.TextBoxFor(m => m.Code, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="col-md-offset-2 col">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberBrowser)
+                            @Html.LabelFor(m => m.RememberBrowser)
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="col-md-offset-2 col">
+                        <input type="submit" class="btn btn-dark max-width" value="Submit" />
+                    </div>
+                </div>
+            }
         </div>
     </div>
-    <div class="mb-3">
-        <div class="col-md-offset-2 col-md-10">
-            <div class="checkbox">
-                @Html.CheckBoxFor(m => m.RememberBrowser)
-                @Html.LabelFor(m => m.RememberBrowser)
-            </div>
-        </div>
-    </div>
-    <div class="mb-3">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-dark" value="Submit" />
-        </div>
-    </div>
-}
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
