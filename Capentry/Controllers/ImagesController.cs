@@ -17,7 +17,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Capentry.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class ImagesController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();

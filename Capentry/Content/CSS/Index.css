@@ -20,7 +20,7 @@
     background-image:url("/Content/Images/christian-mackie-euBmypOZUZA-unsplash.jpg");
     background-attachment: fixed;
     background-size: cover;
-    min-height:90vh;
+    min-height:95vh;
     display:flex;
     flex-direction:column;
     align-content:center;
