@@ -247,11 +247,19 @@
     <Content Include="Content\CSS\About.css" />
     <Content Include="Content\CSS\Account.css" />
     <Content Include="Content\CSS\Contact.css" />
+    <Content Include="Content\CSS\Dashboard.css" />
     <Content Include="Content\CSS\Projects.css" />
     <Content Include="Content\CSS\Images.css" />
     <Content Include="Content\CSS\Index.css" />
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\CSS\Login.css" />
+    <Content Include="Content\Images\20221209_160840.jpg" />
+    <Content Include="Content\Images\20230421_144102.jpg" />
+    <Content Include="Content\Images\20230716_171346.jpg" />
+    <Content Include="Content\Images\20230727_131523.jpg" />
+    <Content Include="Content\Images\20230825_130813.jpg" />
+    <Content Include="Content\Images\20231101_163827.jpg" />
+    <Content Include="Content\Images\20231101_170929.jpg" />
     <Content Include="Content\Images\5579058.jpg" />
     <Content Include="Content\Images\background.jpg" />
     <Content Include="Content\Images\christian-mackie-euBmypOZUZA-unsplash.jpg" />
@@ -350,6 +358,7 @@
     <Content Include="Views\Images\Details.cshtml" />
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Images\Delete.cshtml" />
+    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ApplicationBase\" />
