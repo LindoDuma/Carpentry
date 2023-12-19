@@ -245,13 +245,49 @@ footer {
     padding-right: 10px;
     padding-top: 6vh;
     font-family: Nunito,serif;
-    width: 300px;
+    width: 80vw;
     height: 100vh;
+    position: absolute;
+    display: none;
+}
+/*Tablet*/
+@media(min-width:600px) {
+    #Sidebar {
+        background-color: ghostwhite;
+        border-right: 1px solid lightgray;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 6vh;
+        font-family: Nunito,serif;
+        width: 80vw;
+        height: 100vh;
+        position: absolute;
+        display:none;
+    }
 }
 
+/*Desktop*/
+@media(min-width:900px) {
+    #Sidebar {
+        background-color: ghostwhite;
+        border-right: 1px solid lightgray;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 6vh;
+        font-family: Nunito,serif;
+        width: 300px;
+        height: 100vh;
+        position: relative;
+        display: flex !important;
+    }
+}
 #Sidebar .navbar .container {
     min-height: 100vh;
     max-width: 280px;
+}
+
+.toggle-sidebar{
+    display: inline;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

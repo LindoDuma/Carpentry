@@ -26,14 +26,14 @@
         <nav class="navbar navbar-inverse navbar-dark navbar-expand-lg fixed-top" id="TopNavbar" role="navigation">
             <div class="container-fluid">
                 <div class="d-flex justify-content-start flex-row">
-                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#Sidebar2" aria-controls="#Sidebar2" aria-expanded="false" aria-label="Toggle navigation">
+                    <button onclick="toggleSidebar()" type="button" class="navbar-toggler">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     @Html.ActionLink("BSLP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 </div>
             </div>
         </nav>
-        <nav class="d-flex flex-column ps-1 pe-1" id="Sidebar" role="navigation">
+        <nav class="flex-column ps-1 pe-1 Sidebar" id="Sidebar" role="navigation">
             <div class="container p-0 flex-column mb-auto">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard" ? "selected nav-item" : " nav-item")">@Html.ActionLink("    Dashboard", "Index", "Dashboard", null, new { @class = "nav-link text-black bi bi-speedometer " })</li>
@@ -45,7 +45,7 @@
             </div>
         </nav>
         <div class="container-fluid body-content">
-            <div class="container" id="main">
+            <div class="container-fluid" id="main">
                 @RenderBody()
             </div>
         </div>
@@ -55,3 +55,15 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script type="text/javascript">
+    function toggleSidebar() {
+        var sideB = document.querySelector(".Sidebar");
+
+        if (sideB.style.display === "none") {
+            sideB.style.display = "flex";
+        } else {
+            sideB.style.display = "none";
+        }
+    }
+</script>

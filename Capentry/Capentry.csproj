@@ -211,6 +211,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\DashboardController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Images.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -359,6 +360,7 @@
     <Content Include="Views\Images\Edit.cshtml" />
     <Content Include="Views\Images\Delete.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ApplicationBase\" />
