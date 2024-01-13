@@ -1,9 +1,10 @@
 ﻿@model Capentry.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register Role";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h2>RegisterRole</h2>
+<h2>Register Role</h2>
 @using (Html.BeginForm("RegisterRole", "Account",FormMethod.Post,new {@class= "form-horizontal", role = "form"}))
 {
     @Html.AntiForgeryToken()
@@ -36,7 +37,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","Roles")
 </div>
 
 @section Scripts {

@@ -9,23 +9,23 @@
 }
 
 <div class="container-fluid p-0" id="head">
-    <h1 class="text-center p-3">Manage Images</h1>
+    <h1 class="">Manage Images</h1>
 </div>
 
-<div class="container" id="Images">
+<div class="container-fluid ps-lg-5 pe-lg-5 p-md-3 p-sm-0" id="Images">
 
     @* Dropdown filter - no ajax *@
 
-    <div class="filters d-flex flex-lg-row flex-md-row flex-sm-column gap-lg-4 mb-4" id="controls">
+    <div class="filters d-flex flex-lg-row flex-md-row flex-sm-column gap-lg-1 mb-4" id="controls">
         @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "d-flex gap-2 flex-row align-items-center col-lg-3 col-md-3 col-sm-4" }))
         {
-            <h6>Type</h6>
+            <h6 class="">Type</h6>
             @Html.DropDownList("ProjectType", (SelectList)ViewBag.ProjectType, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PTypes", onchange = "this.form.submit();" })
         }
 
         @using (Html.BeginForm("Index", "Images", FormMethod.Get, new { @class = "d-flex gap-2 flex-row align-items-center col-lg-3 col-md-3 col-sm-4" }))
         {
-            <h6>Project</h6>
+            <h6 class="">Project</h6>
             @Html.DropDownList("ProjectId", (SelectList)ViewBag.ProjectId, "All", new { @class = "form-control form-select btn rounded-0 bi bi-filter", id = "PId", onchange = "this.form.submit();" })
         }
         @Html.ActionLink("  Upload Image", "UploadImage", null, new { @class = "btn btn-dark btn bi bi-upload ms-auto" })

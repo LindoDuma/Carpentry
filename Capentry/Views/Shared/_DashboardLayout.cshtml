@@ -8,7 +8,7 @@
     <link rel="shortcut icon" type="image/ico" href="~/Content/Images/Icon.jpg">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/CSS/Dashboard.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/CSS/DashboardLayout.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito|Ubuntu|Pacifico" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,28 +23,37 @@
     @using Microsoft.AspNet.Identity
 
     <div class="d-flex flex-row vw-100 vh-100">
-        <nav class="navbar navbar-inverse navbar-dark navbar-expand-lg fixed-top" id="TopNavbar" role="navigation">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-start flex-row">
-                    <button onclick="toggleSidebar()" type="button" class="navbar-toggler">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    @Html.ActionLink("BSLP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-            </div>
-        </nav>
-        <nav class="flex-column ps-1 pe-1 Sidebar" id="Sidebar" role="navigation">
+        <nav class="flex-column ps-1 pe-1 Sidebar open-sidebar" id="Sidebar" role="navigation">
             <div class="container p-0 flex-column mb-auto">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between flex-row mb-4">
+                        @Html.ActionLink("BSLP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        <button onclick="closeSide()" type="button" class="btn d-lg-none close-button">
+                            <i class="fa-solid fa-xmark fa-xl text-light"></i>
+                        </button>
+                    </div>
+                </div>
+
                 <ul class="nav nav-pills flex-column mb-auto">
-                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard" ? "selected nav-item" : " nav-item")">@Html.ActionLink("    Dashboard", "Index", "Dashboard", null, new { @class = "nav-link text-black bi bi-speedometer " })</li>
-                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Projects" ? "selected nav-item" : "nav-item")">@Html.ActionLink("    Projects", "Index", "Projects", null, new { @class = "nav-link text-black bi bi-grid " })</li>
-                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Images" ? "selected nav-item" : "nav-item")">@Html.ActionLink("    Images", "Index", "Images", null, new { @class = "nav-link text-black bi bi-images " })</li>
-                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Roles" ? "selected nav-item" : "nav-item")">@Html.ActionLink("    Roles", "Index", "Roles", null, new { @class = "nav-link text-black bi bi-unlock " })</li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard" ? "selected nav-item" : " nav-item")"><div class="d-flex align-items-baseline flex-row side-link"><i class="fa-solid fa-house icons"></i> @Html.ActionLink(" Dashboard", "Index", "Dashboard", null, new { @class = "nav-link " })</div></li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Projects" ? "selected nav-item" : "nav-item")"><div class="d-flex align-items-baseline flex-row side-link"><i class="fa-solid fa-rectangle-list icons"></i> @Html.ActionLink(" Projects", "Index", "Projects", null, new { @class = "nav-link " })</div></li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Images" ? "selected nav-item" : "nav-item")"><div class="d-flex align-items-baseline flex-row side-link"><i class="fa-solid fa-image icons"></i> @Html.ActionLink(" Images", "Index", "Images", null, new { @class = "nav-link " })</div></li>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Roles" ? "selected nav-item" : "nav-item")"><div class="d-flex align-items-baseline flex-row side-link"><i class="fa-solid fa-user-lock icons"></i> @Html.ActionLink(" Roles", "Index", "Roles", null, new { @class = "nav-link " })</div></li>
                 </ul>
                 @*@Html.Partial("_LoginPartial")*@
             </div>
         </nav>
+
         <div class="container-fluid body-content">
+            <nav class="navbar navbar-inverse navbar-dark navbar-expand-lg" id="TopNavbar" role="navigation">
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-start flex-row">
+                        <button onclick="toggleSidebar()" type="button" class="btn navbar-toggler-custom">
+                            <i class="fa-solid fa-bars fa-xl" style="color:gray;"></i>
+                        </button>
+                    </div>
+                </div>
+            </nav>
             <div class="container-fluid" id="main">
                 @RenderBody()
             </div>
@@ -59,11 +68,41 @@
 <script type="text/javascript">
     function toggleSidebar() {
         var sideB = document.querySelector(".Sidebar");
+        var mainContent = document.querySelector(".body-content");
+        var navbar = document.querySelector(".navbar");
 
-        if (sideB.style.display === "none") {
-            sideB.style.display = "flex";
-        } else {
-            sideB.style.display = "none";
+        if (sideB.classList.contains("close-sidebar")) {
+            sideB.classList.add("open-sidebar");
+            sideB.classList.remove("close-sidebar");
+            mainContent.classList.remove("expand-content");
+            navbar.classList.remove("expand-navbar");
+        } else if(sideB.classList.contains("open-sidebar")){
+            sideB.classList.add("close-sidebar");
+            sideB.classList.remove("open-sidebar");
+            mainContent.classList.add("expand-content");
+            navbar.classList.add("expand-navbar");
         }
     }
+
+    function closeSide() {
+        var sideB = document.querySelector(".Sidebar");
+
+        sideB.classList.add("close-sidebar");
+        sideB.classList.remove("open-sidebar");
+    }
+
+    var myBody = document.body;
+
+    function noSidebar() {
+
+        var sideB = document.querySelector(".Sidebar");
+
+        if (window.screen.width < 900) {
+            sideB.classList.remove("open-sidebar");
+            sideB.classList.add("close-sidebar");
+        }
+    }
+
+    myBody.onchange(noSidebar());
+
 </script>

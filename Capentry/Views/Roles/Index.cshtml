@@ -5,35 +5,43 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<div class="container-fluid pt-5 ps-2 pe-2 ">
-    <h2>Roles</h2>
+<link href="~/Content/CSS/Roles.css" rel="stylesheet" type="text/css" />
 
-    <div class="d-flex flex-row gap-2">
-        @Html.ActionLink("    Create New", "Create", "Roles", new { @class = "btn btn-dark bi bi-plus-lg" })
-        @Html.ActionLink("    Register Role", "RegisterRole", "Account", new {@class= "btn btn-dark bi bi-person-plus" })
+<div class="container-fluid p-0 ">
+
+    <div class="container-fluid m-0 p-0" id="head">
+        <h2>Roles</h2>
     </div>
 
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
+    <div class="d-flex flex-row gap-2 ps-lg-5 pe-lg-5">
+        @Html.ActionLink("    Create New", "Create", "Roles", new { @class = "btn btn-dark bi bi-plus-lg" })
+        @*@Html.ActionLink("    Register Role", "RegisterRole", "Account", new {@class= "btn btn-dark bi bi-person-plus" })*@
+        <a href="~/Account/RegisterRole" class="btn btn-dark bi bi-person-plus">&nbsp; Register Role</a>
+    </div>
 
-        @foreach (var item in Model)
-        {
+    <div class="container-fluid m-0 p-lg-5 p-md-3 p-sm-0">
+        <table class="table table-responsive-sm table-responsive-md table-responsive-lg ">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th></th>
             </tr>
-        }
 
-    </table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
 </div>

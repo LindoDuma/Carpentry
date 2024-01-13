@@ -1,21 +1,22 @@
 ﻿body {
 }
 
-.body-content{
-    padding-right:0;
-    padding-left:0;
+.body-content {
+    padding-right: 0;
+    padding-left: 0;
 }
+
 #head {
     background-color: white;
-    height:100px;
-    display:flex;
+    height: 100px;
+    display: flex;
     justify-content: start;
-    align-content:center;
-    align-items:center;
+    align-content: center;
+    align-items: center;
     padding-left: 50px !important;
 }
 
-@media(max-width:600px){
+@media(max-width:600px) {
     #head {
         background-color: white;
         height: 90px;
@@ -27,14 +28,14 @@
     }
 }
 
-option{
-    background-color:white;
+option {
+    background-color: white;
 }
 
-option:hover{
-    background-color:black;
-    color:gold;
-}
+    option:hover {
+        background-color: black;
+        color: gold;
+    }
 
 #head h2 {
     font-family: Ubuntu,sans-serif;
@@ -43,7 +44,7 @@ option:hover{
     text-transform: uppercase;
 }
 
-@media(max-width:786px){
+@media(max-width:786px) {
     #head h2 {
         font-family: Ubuntu,sans-serif;
         font-size: 30px;
@@ -52,13 +53,13 @@ option:hover{
     }
 }
 
-th{
-    font-variant-caps:all-petite-caps;
-    font-size:21px;
-    font-weight:900;
+th {
+    font-variant-caps: all-petite-caps;
+    font-size: 21px;
+    font-weight: 900;
 }
 
-.btn-crud{
+.btn-crud {
     background-color: lightslategray !important;
     border-color: lightslategray !important;
 }
@@ -84,20 +85,20 @@ th{
     font-size: 60px;
 }
 
-.preview{
-    width:initial;
-    max-height:80vh;
-    aspect-ratio:initial;
+.preview {
+    width: initial;
+    max-height: 80vh;
+    aspect-ratio: initial;
 }
 
-.crud-container{
+.crud-container {
     padding-left: 200px;
     padding-right: 200px;
-    padding-top:40px;
-    min-height:90vh;
+    padding-top: 40px;
+    min-height: 90vh;
 }
 
-@media(max-width:720px){
+@media(max-width:720px) {
     .crud-container {
         padding-left: 60px;
         padding-right: 60px;
@@ -117,6 +118,7 @@ th{
     font-weight: 600;
     font-size: 60px;
 }
+
 #detail h2 {
     font-weight: 600;
     font-size: 60px;

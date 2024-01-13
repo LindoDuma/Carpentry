@@ -11,13 +11,13 @@
 <div class="container-fluid m-0 p-0" id="head">
     <h2>Projects</h2>
 </div>
-@if(User.IsInRole("Admin")) {
+<div class="d-flex justify-content-start ps-lg-5 pe-lg-5">
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("   Create New", "Create", null, new { @class = "btn btn-dark bi bi-plus-lg" })
     </p>
-}
+</div>
 <div class="container-fluid m-0 p-lg-5 p-md-3 p-sm-0">
-    <table class="table table-responsive-lg">
+    <table class="table table-responsive-sm table-responsive-md table-responsive-lg">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.ProjectName)
@@ -44,9 +44,9 @@
                     @Html.DisplayFor(modelItem => item.ProjectYear)
                 </td>
                 <td class="d-flex flex-row gap-2">
-                    @Html.ActionLink(" ", "Edit", new { id = item.ProjectID }, new { @class = "btn btn-success bi bi-pencil-fill", title = "Edit" })
-                    @Html.ActionLink(" ", "Details", new { id = item.ProjectID }, new { @class = "btn btn-primary bi bi-info-lg", title = "Details" })
-                    @Html.ActionLink(" ", "Delete", new { id = item.ProjectID }, new { @class = "btn btn-danger bi bi-x-lg", title = "Delete" })
+                    @Html.ActionLink(" ", "Edit", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-success bi bi-pencil-fill", title = "Edit", id = "Edit" })
+                    @Html.ActionLink(" ", "Details", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-primary bi bi-info-lg", title = "Details", id = "Details" })
+                    @Html.ActionLink(" ", "Delete", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-danger bi bi-trash", title = "Delete", id = "Delete" })
                 </td>
             </tr>
         }

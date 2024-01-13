@@ -8,9 +8,15 @@ namespace Capentry.Models
 {
     public class DashboardController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Dashboard
         public ActionResult Index()
         {
+            ViewBag.projects = db.Projects.Count();
+            ViewBag.images = db.ImageModels.Count();
+            ViewBag.users = db.Users.Count();
+
             return View();
         }
     }
