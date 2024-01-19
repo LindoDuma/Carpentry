@@ -7,50 +7,54 @@
 
 <link href="~/Content/CSS/Images.css" rel="stylesheet" type="text/css" />
 
-<div class="row g-0 align-items-center align-content-center justify-content-center crud-container" id="detail">
-    <div class="col-lg-4">
-        <h2>Details</h2>
-
-        <div>
-            <dl class="dl-horizontal">
-                <dt class="visually-hidden">
-                    @Html.DisplayNameFor(model => model.images.ImageName)
-                </dt>
-
-                <dd class="visually-hidden">
-                    @Html.DisplayFor(model => model.images.ImageName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.projects.ProjectName)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.projects.ProjectName)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.projects.ProjectType)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.projects.ProjectType)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.projects.ProjectYear)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.projects.ProjectYear)
-                </dd>
-            </dl>
+<div class="row g-0 align-items-center justify-content-start crud-container" id="detail">
+    <div class="col-lg-4 align-self-start">
+        <div class="container-fluid m-0 p-0" id="head">
+            <h2>Details</h2>
         </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.images.ImageID }, new { @class = "btn btn-dark" })
-            @Html.ActionLink("Delete", "Delete", new { id = Model.images.ImageID }, new { @class = "btn btn-dark" })
-            @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" }) |
-        </p>
+
+        <div class="container-fluid m-0 p-lg-5 p-md-3 p-sm-0 form-top-padding">
+            <div>
+                <dl class="dl-horizontal">
+                    <dt class="visually-hidden">
+                        @Html.DisplayNameFor(model => model.images.ImageName)
+                    </dt>
+
+                    <dd class="visually-hidden">
+                        @Html.DisplayFor(model => model.images.ImageName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.projects.ProjectName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.projects.ProjectName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.projects.ProjectType)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.projects.ProjectType)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.projects.ProjectYear)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.projects.ProjectYear)
+                    </dd>
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.images.ImageID }, new { @class = "btn btn-dark" })
+                @Html.ActionLink("Delete", "Delete", new { id = Model.images.ImageID }, new { @class = "btn btn-dark" })
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "text-decoration-none" }) |
+            </p>
+        </div>
     </div>
     <div class="col-lg-7 ">
         <img class="img img-fluid preview" loading="lazy" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", Model.images.ImagePath)) alt="" />

@@ -89,7 +89,7 @@ body {
     width: 100%;
     /*left: 0;*/
     z-index: 1030;
-    transition: 0.3s all ease-in-out;
+    transition: 0.3s all ease-in-out, border-bottom 0.1ms;
 }
 
 /*Tablet*/
@@ -123,7 +123,8 @@ body {
         width: calc(100% - 280px);
         /*left: 0;*/
         z-index: 1030;
-        transition: 0.3s all ease-in-out; 
+        border-bottom: 1px solid lightgrey;
+        transition: 0.3s all ease-in-out, border-bottom 0.1ms;
     }
 }
 
@@ -190,6 +191,7 @@ body {
     color: gold;
     font-family: 'Dancing Script', cursive;
     font-size: xx-large;
+    padding-left: 20px;
 }
 
 .navbar-brand:hover,
@@ -293,6 +295,10 @@ body {
 .open-sidebar{
     /*display: flex !important;*/
     left: 0 !important;
+}
+
+#Sidebar .nav-pills {
+    gap: 10px;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {

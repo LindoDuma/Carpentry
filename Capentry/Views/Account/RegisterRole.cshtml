@@ -4,40 +4,45 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<h2>Register Role</h2>
-@using (Html.BeginForm("RegisterRole", "Account",FormMethod.Post,new {@class= "form-horizontal", role = "form"}))
-{
-    @Html.AntiForgeryToken()
+<link href="~/Content/CSS/Projects.css" rel="stylesheet" type="text/css" />
 
-<div class="form-horizontal">
-    <h4>Role</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-    <div class="mb-3">
-        @Html.Label("Select User", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("UserName")
-        </div>
-    </div>
-
-    <div class="mb-3">
-        @Html.Label("Select Role", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("Name")
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Register" class="btn btn-dark" />
-        </div>
-    </div>
+<div class="container-fluid m-0 p-0" id="head">
+    <h2>Register Role</h2>
 </div>
-}
+
+<div class="container-fluid m-0 p-lg-5 p-md-3 p-sm-0">
+    @using (Html.BeginForm("RegisterRole", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="mb-3">
+                @Html.Label("Select User", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("UserName", default, new { @class = "form-select"})
+                </div>
+            </div>
+
+            <div class="mb-3">
+                @Html.Label("Select Role", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("Name", default, new { @class = "form-select" })
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Register" class="btn btn-dark" />
+                </div>
+            </div>
+        </div>
+    }
 
 <div>
-    @Html.ActionLink("Back to List", "Index","Roles")
+    @Html.ActionLink("Back to List", "Index", "Roles")
+</div>
 </div>
 
 @section Scripts {
