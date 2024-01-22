@@ -372,3 +372,21 @@ img.hover-shadow {
     width:400px;
     height:auto;
 }
+
+#previewPlaceholder {
+    width: 400px;
+    height: 200px;
+    border: 2px dashed grey;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+}
+#previewPlaceholder p {
+    padding: 0;
+    margin: 0;
+}
+.bi-card-image{
+    font-size: 30px;
+}

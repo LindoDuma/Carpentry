@@ -7,49 +7,55 @@
 
 <link href="~/Content/CSS/Images.css" rel="stylesheet" type="text/css" />
 
-<div class="row flex-row justify-content-center align-items-center" id="Upload">
-    <div class="col-4">
-        <h2>Upload</h2>
+<div class="row flex-row justify-content-start align-items-center" id="Upload">
+    <div class="col-lg-4 crud-column">
+        <div class="container-fluid m-0 p-0" id="head">
+            <h2>Upload Image</h2>
+        </div>
 
-        @using (Html.BeginForm("UploadImage", "Images", FormMethod.Post, new { enctype = "multipart/form-data", }))
-        {
-            @Html.AntiForgeryToken()
+        <div class="container-fluid m-0 p-lg-5 p-md-3 p-sm-0 form-top-padding">
+            @using (Html.BeginForm("UploadImage", "Images", FormMethod.Post, new { enctype = "multipart/form-data", }))
+            {
+                @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                <h4>Image</h4>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                 <div class="mb-3">
                     @Html.Label("Image", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Files, new { type = "file", @class = "form-control", id="file", onchange= "readURL(this)" })
+                    <div class="col">
+                        @Html.TextBoxFor(model => model.Files, new { type = "file", @class = "form-control", id = "file", onchange = "readURL(this)" })
                         @Html.ValidationMessage("Please Select Photo")
                     </div>
                 </div>
 
                 <div class="mb-3">
                     @Html.Label("Project", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col">
                         @Html.DropDownListFor(model => model.ProjectID, (SelectList)ViewBag.Projects,
                                 "Select", new { @class = "form-select rounded-0" })
-                        @Html.ValidationMessage("Please Select Photo")
+                        @Html.ValidationMessage("Please Select Project")
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <div class="col-md-10">
-                        <button class="btn btn-dark bi bi-upload" type="submit" value="Submit">  Upload</button>
+                    <div class="col">
+                        <button class="btn btn-dark bi bi-upload w-100" type="submit" value="Submit">  Upload</button>
                     </div>
                 </div>
             </div>
-        }
+            }
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            </div>
     </div>
-    <div class="col-5 d-flex align-items-center" id="previewColumn">
-        <img class="img-fluid img" src="~/Content/Images/background.jpg" alt="preview" id="preview"/>
+    <div class="col-lg-5 d-flex align-items-center justify-content-center" id="previewColumn">
+        <img class="img-fluid img visually-hidden" src="~/Content/Images/background.jpg" alt="preview" id="preview"/>
+        <div class="" id="previewPlaceholder">
+            <i class="bi bi-card-image"></i>
+        </div>
     </div>
 </div>
 
@@ -58,9 +64,14 @@
         if (input.files && input.files[0]) {
             var reader = new FileReader();
 
+            var previewImg = $('#preview');
+            var placeholder = $('#previewPlaceholder');
+
             reader.onload = function (e) {
-                $('#preview')
+                previewImg
                     .attr('src', e.target.result);
+                previewImg.removeClass("visually-hidden");
+                placeholder.addClass("visually-hidden");
             };
 
             reader.readAsDataURL(input.files[0]);
