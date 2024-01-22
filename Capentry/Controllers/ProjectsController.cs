@@ -21,9 +21,26 @@ namespace Capentry.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projects
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
-            return View(db.Projects.ToList());
+            var projects = db.Projects.OrderBy(x => x.ProjectID).ToList();
+
+            ViewBag.message = "There are no projects";
+
+            //Check if the query parameter is null or empty
+            if (!String.IsNullOrEmpty(query))
+            {
+                projects = db.Projects.Where(x => x.ProjectName.Contains(query)).ToList();
+
+                return View(projects);
+            }
+            //If it is then return a list of all Projects
+            else
+            {
+                return View(projects);
+            }
+
+            //return View(projects);
         }
 
         // GET: Projects/Details/5
