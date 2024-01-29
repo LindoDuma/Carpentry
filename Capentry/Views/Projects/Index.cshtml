@@ -1,5 +1,8 @@
-﻿@model IEnumerable<Capentry.Models.Projects>
-@using Microsoft.AspNet.Identity    
+﻿@model PagedList<Capentry.Models.Projects>
+@using Microsoft.AspNet.Identity
+
+@using PagedList
+@using PagedList.Mvc
 
 @{
     ViewBag.Title = "Projects";
@@ -12,58 +15,92 @@
     <h2>Projects</h2>
 </div>
 <div class="d-flex justify-content-between ps-lg-5 pe-lg-5">
-    <p>
+    <p class="">
         @Html.ActionLink("   Create New", "Create", null, new { @class = "btn btn-dark bi bi-plus-lg" })
     </p>
-    <div>
+    <div class="">
         @using (Html.BeginForm("Index", "Projects", FormMethod.Get, new { @class = "d-flex gap-2 flex-row" }))
         {
-            @Html.TextBox("query","", new { @class = "form-control me-2", placeholder = "Search", id = "Search"})
-            <button class="btn btn-outline-success" type="submit" id="SearchButton">Search</button>
+            @Html.TextBox("query", "", new { @class = "form-control me-2", placeholder = "Search", id = "Search" })
+            <button class="btn btn-outline-dark" type="submit" id="SearchButton">Search</button>
         }
     </div>
 </div>
 <div class="container-fluid m-0 p-lg-5 p-md-3 p-sm-0">
-    @if (Model != null) {
-    <table class="table table-responsive-sm table-responsive-md table-responsive-lg">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProjectYear)
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
+    @if (Model != null)
+    {
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProjectName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProjectType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstOrDefault().ProjectYear)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
 
-        @foreach (var item in Model)
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectType)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProjectYear)
+                        </td>
+                        <td class="d-flex flex-row gap-2">
+                            @Html.ActionLink(" ", "Edit", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-success bi bi-pencil-fill", title = "Edit", id = "Edit" })
+                            @Html.ActionLink(" ", "Details", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-primary bi bi-info-lg", title = "Details", id = "Details" })
+                            @Html.ActionLink(" ", "Delete", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-danger bi bi-trash", title = "Delete", id = "Delete" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+        @*Paging Butoons*@
+
+        @*Page @( Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber ) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Index", "Projects",
+         new { page, sortOrder = ViewBag.CurrentSort })
+         ,
+         new PagedListRenderOptions
+         {
+             LiElementClasses = new string[] { "page-item" },
+             ContainerDivClasses = new string[] { "justify-content-center d-flex pagination-container" },
+             UlElementClasses = new string[] { "pagination" }
+         }
+
+        )}
+        else
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectYear)
-                </td>
-                <td class="d-flex flex-row gap-2">
-                    @Html.ActionLink(" ", "Edit", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-success bi bi-pencil-fill", title = "Edit", id = "Edit" })
-                    @Html.ActionLink(" ", "Details", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-primary bi bi-info-lg", title = "Details", id = "Details" })
-                    @Html.ActionLink(" ", "Delete", new { id = item.ProjectID }, new { @class = "btn btn-crud btn-danger bi bi-trash", title = "Delete", id = "Delete" })
-                </td>
-            </tr>
-        }
-
-    </table>
-    }
-    else {
         <div><p>@ViewBag.message</p></div>
     }
 </div>
+
+<script type="text/javascript">
+
+    var body = document.body;
+    body.onload(addClasses());
+
+    function addClasses() {
+
+        var links = document.querySelectorAll(".page-item");
+
+
+        for (let i = 0; i < links.length; i++) {
+            links[i].children[0].classList.add("page-link");
+        }
+    }
+</script>

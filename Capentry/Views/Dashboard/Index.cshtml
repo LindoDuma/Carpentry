@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 
-<link href="~/Content/CSS/Roles.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/CSS/DashboardHome.css" rel="stylesheet" type="text/css" />
 
 @using Microsoft.AspNet.Identity
 
@@ -14,47 +14,63 @@
         <h2>Dashboard</h2>
     </div>
 
-    <div class="container-fluid m-0 ps-lg-5 pe-lg-5 pt-lg-2 p-md-3 p-sm-0">
-        <div class="jumbotron d-flex justify-content-center align-items-center">
-            <h3>Welcome @User.Identity.Name.ToString() to the Dashboard</h3>
+    <div class="container-fluid m-0 ps-lg-5 pe-lg-5 pt-lg-2 p-md-3 p-sm-0" id="dash-container">
+        <div class="jumbotron d-flex justify-content-center align-items-center" id="jumbotron">
+            <h3>Welcome back @User.Identity.GetUserName()</h3>
         </div>
-        <div class="row gap-3 g-0 p-0">
-            <div class="col d-flex flex-column justify-content-center align-items-center blocks">
-                <h6>Projects</h6>
-                <h2>@ViewBag.projects</h2>
+        <div class="row gap-3 g-0 p-0" id="blocks-container">
+            <div class="col d-flex flex-row justify-content-between align-items-center blocks">
+                <div class="d-flex flex-column-reverse justify-content-between align-items-start h-100 blocks-texts">
+                    <h6>Projects</h6>
+                    <h2>@ViewBag.projects</h2>
+                </div>
+                <i class="fa-solid fa-rectangle-list icon"></i>
             </div>
-            <div class="col d-flex flex-column justify-content-center align-items-center blocks">
-                <h6>Images</h6>
-                <h2>@ViewBag.images</h2>
+            <div class="col d-flex flex-row justify-content-between align-items-center blocks">
+                <div class="d-flex flex-column-reverse justify-content-between align-items-start h-100 blocks-texts">
+                    <h6>Images</h6>
+                    <h2>@ViewBag.images</h2>
+                </div>
+                <i class="fa-solid fa-images icon"></i>
             </div>
-            <div class="col d-flex flex-column justify-content-center align-items-center blocks">
-                <h6>Users</h6>
-                <h2>@ViewBag.users</h2>
+            <div class="col d-flex flex-row justify-content-between align-items-center blocks">
+                <div class="d-flex flex-column-reverse justify-content-between align-items-start h-100 blocks-texts">
+                    <h6>Users</h6>
+                    <h2>@ViewBag.users</h2>
+                </div>
+                <i class="fa-solid fa-users icon"></i>
+            </div>
+        </div>
+        <div  class="row gap-3 g-0 p-0 mt-4" id="stats-container">
+            <div class="col stat-blocks">
+                <h4>Latest Projects</h4>
+                <table class="table table-dark table-borderless">
+
+                    @foreach (var item in ViewBag.projectList)
+                    {
+                        <tr>
+                            <td>@item.ProjectName</td>
+                            <td>@item.ProjectYear</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            <div class="col stat-blocks">
+                <h4>All Users</h4>
+                <table class="table table-dark table-borderless">
+
+                    @foreach (var item in ViewBag.usersList)
+                    {
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.UserName</td>
+                        </tr>
+                    }
+                </table>
             </div>
         </div>
     </div>
 
 </div>
-<style>
-
-    .jumbotron {
-        width: 100%;
-        height: 30vh;
-        background-color: lightgray;
-        border-radius: 10px;
-        padding: 0px;
-        margin-bottom: 50px;
-    }
-
-    .blocks {
-        background-color: lightslategrey;
-        height: 300px;
-        width: 90%;
-        border-radius: 10px;
-    }
-
-        .blocks h3, .blocks p {
-            color: white;
-        }
-</style>
 

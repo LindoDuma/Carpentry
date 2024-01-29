@@ -12,6 +12,8 @@ using CloudinaryDotNet;
 using System.IO;
 using CloudinaryDotNet.Actions;
 using System.ComponentModel.DataAnnotations;
+//using X.PagedList;
+using PagedList;
 
 namespace Capentry.Controllers
 {
@@ -21,26 +23,60 @@ namespace Capentry.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projects
-        public ActionResult Index(string query)
+        public ActionResult Index(string query, string filter,string sortOrder, int? page ,int? pageSize )
         {
-            var projects = db.Projects.OrderBy(x => x.ProjectID).ToList();
+            var projects = from s in db.Projects
+                           select s;
+
 
             ViewBag.message = "There are no projects";
+
+            ViewData["Projects"] = projects;
 
             //Check if the query parameter is null or empty
             if (!String.IsNullOrEmpty(query))
             {
-                projects = db.Projects.Where(x => x.ProjectName.Contains(query)).ToList();
+                projects = projects.Where(x => x.ProjectName.Contains(query) || x.ProjectYear.ToString() == query || x.ProjectType.ToString().Contains(query)).OrderBy(y => y.ProjectID);
 
-                return View(projects);
+            }
+            else if (!String.IsNullOrEmpty(sortOrder)) {
+
+                switch (sortOrder)
+                {
+                    case "Year":
+                        projects = projects.OrderBy(x => x.ProjectYear);
+
+                        break;
+                    case "Year_Desc":
+                        projects = projects.OrderByDescending(x => x.ProjectYear);
+
+                        break;
+                    case "Name":
+                        projects = projects.OrderBy(x => x.ProjectName);
+
+                        break;
+                    case "Name_Desc":
+                        projects = projects.OrderByDescending(x => x.ProjectName);
+
+                        break;
+                    default:
+                        projects = projects.OrderBy(x => x.ProjectID);
+                        break;
+                }
+
+            }
+            else if (!String.IsNullOrEmpty(filter))
+            {
+                projects = projects.Where(x => x.ProjectType.ToString() == filter).OrderBy(x => x.ProjectID);
             }
             //If it is then return a list of all Projects
             else
             {
-                return View(projects);
+                projects = projects.OrderBy(x => x.ProjectID);
+                
             }
 
-            //return View(projects);
+            return View(projects.ToPagedList(page ?? 1, pageSize ?? 10));
         }
 
         // GET: Projects/Details/5
@@ -61,7 +97,12 @@ namespace Capentry.Controllers
         // GET: Projects/Create
         public ActionResult Create()
         {
-            return View();
+            int minimumYear = System.DateTime.Now.Year;
+
+            ProjectViewModel projectsViewModel = new ProjectViewModel();
+            projectsViewModel.ProjectYear = minimumYear;
+
+            return View(projectsViewModel);
         }
 
         [HttpPost]

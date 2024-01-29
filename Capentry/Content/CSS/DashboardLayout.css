@@ -308,7 +308,7 @@ body {
 
 .selected div {
     color: white !important;
-    background-color: orange !important;
+    background-color: var(--bs-dark) !important;
     border-radius: 10px !important;
     /*border-left: 5px solid gold !important;*/
 }
@@ -439,4 +439,11 @@ h1, h2, h3, h4, h5, h6 {
 
 input, select, textarea {
     max-width: 100% !important;
+}
+.pagination {
+    --bs-pagination-active-bg: var(--bs-dark);
+    --bs-pagination-active-border-color: var(--bs-dark);
+    --bs-pagination-disabled-color: #6c757d;
+    --bs-pagination-hover-color: var(--bs-dark);
+    --bs-pagination-color: var(--bs-dark);
 }
