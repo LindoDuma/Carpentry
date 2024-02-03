@@ -388,6 +388,7 @@
     <Content Include="Views\Images\Delete.cshtml" />
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Images\_LoadMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />

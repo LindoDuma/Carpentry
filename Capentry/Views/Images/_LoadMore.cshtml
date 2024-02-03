@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Capentry.Models.Images>
+
+@{
+    foreach (var item in Model)
+    {
+
+        <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
+            <a @*onclick="openModal(); currentSlide(@counter)"*@ href="/Images/Details/@item.ImageID">
+                <img class="img img-fluid"
+                     loading="eager"
+                     src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
+                     data-src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_400,q_60/@item.PublicID"
+                     alt="@item.ImageID"
+                     width="500"
+                     height="500" />
+            </a>
+        </div>
+
+    }
+}

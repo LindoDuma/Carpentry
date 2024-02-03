@@ -36,13 +36,11 @@
         <div class="row g-3" id="imageData">
 
             @{
-                var counter = 1;
-
                 foreach (var item in Model)
                 {
 
                     <div class="col-sm-5 col-md-4 col-lg-3 item p-2">
-                        <a @*onclick="openModal(); currentSlide(@counter)"*@ href="Images/Details/@item.ImageID">
+                        <a @*onclick="openModal(); currentSlide(@counter)"*@ href="/Images/Details/@item.ImageID">
                             <img class="img img-fluid lazy"
                                  loading="eager"
                                  src="http://res.cloudinary.com/dfi0awyos/image/upload/c_scale,w_50,q_10/@item.PublicID"
@@ -53,9 +51,13 @@
                         </a>
                     </div>
 
-                    counter = counter + 1;
                 }
             }
+
+        </div>
+
+        <div class="d-flex mt-2 justify-content-center align-items-center">
+            <button class="btn btn-dark" id="LoadMore">Load More</button>
         </div>
     }
     else
@@ -64,77 +66,8 @@
     }
 </div>
 
-<div id="myModal" class="modal">
-    <div class="container-fluid fixed-top toolbar">
-        <div class="d-flex flex-row gap-2">
-            <span class="close cursor" onclick="closeModal()">&times;</span>
-        </div>
-    </div>
-    <div class="modal-content">
+@section scripts{ 
 
-        @{ 
-
-            var counterModal = 1;
-
-            foreach (var item in Model)
-            {
-            <div class="mySlides">
-                <div class="numbertext">@counterModal / @Model.Count()</div>
-                <img id="LImage" loading="lazy" class="img img-fluid" src=@(String.Format("{0}{1}", "https://res.cloudinary.com", item.ImagePath)) alt="" />
-            </div>
-
-            counterModal = counterModal + 1;
-            }
-        }
-    </div>
-
-    <!-- Next/previous controls -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-
-<script>
-    // Open the Modal
-    function openModal() {
-        document.getElementById("myModal").style.display = "flex";
-    }
-
-    // Close the Modal
-    function closeModal() {
-        document.getElementById("myModal").style.display = "none";
-    }
-
-    var slideIndex = 1;
-    showSlides(slideIndex);
-
-    // Next/previous controls
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
-    }
-
-    // Thumbnail image controls
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
-    }
-
-    function showSlides(n) {
-        var i;
-        var slides = document.getElementsByClassName("mySlides");
-        var dots = document.getElementsByClassName("demo");
-        var captionText = document.getElementById("caption");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-        captionText.innerHTML = dots[slideIndex - 1].alt;
-    }
-</script>
 <script type="text/javascript">
     setTimeout(tabs, 1);
     setTimeout(allTab,2);
@@ -157,6 +90,8 @@
     }
 
 </script>
+
+@* Intersection observer script for Lazy Loading images*@
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
         const imageObserver = new IntersectionObserver((entries, imgObserver) => {
@@ -176,4 +111,31 @@
         })
     })
 </script>
+
+@* Load More functionality *@
+<script type="text/javascript">
+
+    var Page = 2;
+    var PageSize = 8;
+
+    var typeFilter = document.getElementById('PTypes').value;
+    var projectFilter = document.getElementById('PId').value;
+
+    $("#LoadMore").click(function () {
+
+        $.ajax({
+            url: "/Images/LoadMore?Page=" + Page + "&PageSize=" + PageSize + "&ProjectType=" + typeFilter + "&ProjectId=" + projectFilter,
+            type: 'GET',
+            success: function (data) {
+                $("#imageData").append(data);
+                Page += 1;
+            },
+            error: function (request, error) {
+                console.log(arguments);
+                alert(" Can't do because: " + error);
+            },
+        });
+    });
+</script>
+}
 

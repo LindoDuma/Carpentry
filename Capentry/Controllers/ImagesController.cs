@@ -23,13 +23,16 @@ namespace Capentry.Controllers
         ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ImageModels
-        public ActionResult Index(int? ProjectId, ProjectTypes? ProjectType)
+        public ActionResult Index(int? ProjectId, ProjectTypes? ProjectType,int? Page, int? PageSize)
         {
             ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
 
             ViewBag.ProjectType = new SelectList((ProjectTypes[])Enum.GetValues(typeof (ProjectTypes)), "ProjectTypes");
 
             ViewBag.CurrentTab = ProjectType ?? null;
+
+            ViewData["currentProjectId"] = ProjectId;
+            ViewData["currentProjectType"] = ProjectType;
 
             var imageList = db.ImageModels.ToList();
 
@@ -45,7 +48,36 @@ namespace Capentry.Controllers
                 imageList = db.ImageModels.Where(y => y.ProjectID == ProjectId).ToList();
             }
 
-            return View(imageList);
+            return View(imageList.Skip((Page - 1) * PageSize ?? 0).Take(PageSize ?? 8));
+        }
+
+        [HttpGet]
+        public ActionResult LoadMore(int? ProjectId, ProjectTypes? ProjectType, int? Page, int? PageSize )
+        {
+            ViewBag.ProjectId = new SelectList(db.Projects, "ProjectId", "ProjectName");
+
+            ViewBag.ProjectType = new SelectList((ProjectTypes[])Enum.GetValues(typeof(ProjectTypes)), "ProjectTypes");
+
+            ViewBag.CurrentTab = ProjectType ?? null;
+
+            ViewBag.PId = ProjectId ;
+            ViewBag.PType = ProjectType ;
+
+            var imageList = db.ImageModels.ToList();
+
+            var projectList = db.Projects.Where(h => h.ProjectType == ProjectType).Select(b => b.ProjectID).ToList();
+
+            if (ProjectType != null)
+            {
+                imageList = imageList.Where(y => projectList.Contains(y.ProjectID)).ToList();
+            }
+
+            if (ProjectId != null)
+            {
+                imageList = imageList.Where(y => y.ProjectID == ProjectId).ToList();
+            }
+
+            return PartialView("_LoadMore", imageList.Skip((Page - 1) * PageSize ?? 1).Take(PageSize ?? 4));
         }
 
         [AllowAnonymous]
